@@ -1,0 +1,14 @@
+/* Nav.css */
+.nav {
+    background-color: black;
+    display: flex;
+    padding: 1rem;
+  }
+  
+  .nav-link {
+    color: blue;
+    font-weight: bold;
+    margin-right: 1.5rem;
+    text-decoration: none;
+  }
+  
