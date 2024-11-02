@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import './Login.css';
 
-function Login() {
+function Signin() {
   const [username, setUsername] = useState('');
 
   const handleLogin = () => {
@@ -23,4 +23,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signin;

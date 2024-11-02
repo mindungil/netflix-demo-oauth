@@ -6,7 +6,7 @@ import Popular from './components/Popular';
 import Search from './components/Search';
 import Wishlist from './components/Wishlist';
 import Profile from './components/Profile';
-import Login from './components/Login';
+import Signin from './components/Auth/Signin';
 
 function AppRoutes() {
   return (
@@ -16,7 +16,7 @@ function AppRoutes() {
       <Route path="/search" element={<Search />} />
       <Route path="/wishlist" element={<Wishlist />} />
       <Route path="/profile" element={<Profile />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/signin" element={<Signin />} />
     </Routes>
   );
 }
