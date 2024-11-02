@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Signin.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Signin() {
   const [email, setEmail] = useState('');
@@ -15,7 +17,7 @@ function Signin() {
       localStorage.setItem('isLoggedIn', true);
       navigate('/');
     } else {
-      alert('로그인에 실패했습니다.');
+      toast.error('로그인에 실패했습니다.');
     }
   };
 

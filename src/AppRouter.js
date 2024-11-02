@@ -6,7 +6,7 @@ import Popular from './components/Popular';
 import Search from './components/Search';
 import Wishlist from './components/Wishlist';
 import Profile from './components/Profile';
-import Signin from './componen  ts/Auth/Signin';
+import Signin from './components/Auth/Signin';
 
 function ProtectedRoute({ children }) {
   const isAuthenticated = localStorage.getItem('isLoggedIn');
