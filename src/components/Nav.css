@@ -1,14 +1,23 @@
-/* Nav.css */
+/* src/components/Nav.css */
+
 .nav {
-    background-color: black;
-    display: flex;
-    padding: 1rem;
-  }
-  
-  .nav-link {
-    color: blue;
-    font-weight: bold;
-    margin-right: 1.5rem;
-    text-decoration: none;
-  }
-  
+  display: flex;
+  justify-content: space-around; /* Links are evenly spaced */
+  align-items: center;
+  background-color: black;
+  padding: 10px 0;
+  width: 100%; /* Fill the entire width of the screen */
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 15px; /* Add padding around links */
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #1e90ff; /* Change color on hover */
+}
