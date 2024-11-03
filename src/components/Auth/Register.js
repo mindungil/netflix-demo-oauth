@@ -18,15 +18,42 @@ function Register() {
 
   const handleRegister = () => {
     if (password !== confirmPassword) {
-      toast.error('비밀번호가 일치하지 않습니다.');
+      toast.error('비밀번호가 일치하지 않습니다.', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
       return;
     }
     if (!validateEmail(email)) {
-      toast.error("이메일 형식이 옳지 않습니다.");
+      toast.error('이메일 형식이 옳지 않습니다.', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
       return;
     }
     if (!termsAccepted) {
-      toast.error('약관에 동의해야 합니다.');
+      toast.error('약관에 동의해야 합니다.', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
       return;
     }
 
