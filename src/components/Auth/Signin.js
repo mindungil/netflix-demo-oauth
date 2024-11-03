@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Signin.css';
+import Register from './Register';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -40,6 +41,7 @@ function Signin() {
         <input type="checkbox" /> Remember me
       </label>
       <button onClick={handleLogin}>로그인</button>
+      <button onClick={() => <Register />}> 회원가입</button>
     </div>
   );
 }
