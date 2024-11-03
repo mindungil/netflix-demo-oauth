@@ -1,9 +1,8 @@
-// src/components/Auth/Login.js
+// src/components/Auth/Signin.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Signin.css';
-import Register from './Register';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Signin() {
@@ -23,7 +22,7 @@ function Signin() {
   };
 
   return (
-    <div>
+    <div className="signin-container">
       <h2>로그인</h2>
       <input
         type="email"
@@ -41,7 +40,7 @@ function Signin() {
         <input type="checkbox" /> Remember me
       </label>
       <button onClick={handleLogin}>로그인</button>
-      <button onClick={() => <Register />}> 회원가입</button>
+      <ToastContainer />
     </div>
   );
 }
