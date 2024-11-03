@@ -6,8 +6,8 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Signin() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState(' ');
+  const [password, setPassword] = useState(' ');
   const navigate = useNavigate();
 
   const handleLogin = () => {
@@ -16,8 +16,27 @@ function Signin() {
     if (email === storedEmail && password === storedPassword) {
       localStorage.setItem('isLoggedIn', true);
       navigate('/');
+      toast.success('로그인에 성공하였습니다.', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
     } else {
-      toast.error('로그인에 실패했습니다.');
+      toast.error('로그인에 실패했습니다.', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
     }
   };
 
@@ -40,7 +59,6 @@ function Signin() {
         <input type="checkbox" /> Remember me
       </label>
       <button onClick={handleLogin}>로그인</button>
-      <ToastContainer />
     </div>
   );
 }
