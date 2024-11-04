@@ -20,7 +20,16 @@ function Signin({ toggleAuth }) {
         console.log('User data found:', userData); // 디버깅 로그 추가
       } catch (error) {
         console.error('JSON 파싱 오류:', error);
-        toast.error('데이터를 가져오는 데 문제가 발생했습니다.');
+        toast.error('데이터를 불러오는데 실패하였습니다.', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
         return;
       }
     } else {
@@ -29,11 +38,29 @@ function Signin({ toggleAuth }) {
   
     if (!userData || email !== userData.email || password !== userData.password) {
       console.log('로그인 실패 조건 실행');
-      toast.error('로그인에 실패했습니다. 이메일 또는 비밀번호를 확인하세요.');
+      toast.error('아이디 또는 비밀번호를 확인하세요.', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
     } else {
       console.log('로그인 성공 조건 실행');
-      sessionStorage.setItem('isLoggedIn', 'true');
-      toast.success('로그인에 성공하였습니다.');
+      localStorage.setItem('isLoggedIn', 'true');
+      toast.success('로그인 성공', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
       navigate('/');
     }
   };  

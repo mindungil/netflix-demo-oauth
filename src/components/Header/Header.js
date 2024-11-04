@@ -4,8 +4,8 @@ import Nav from './Nav';
 import HandleAuth from "../Auth/HandleAuth";
 
 function Header() {
-    const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
-
+    const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'))
+    console.log(isLoggedIn);
     return (
         <>
             {isLoggedIn ? <Nav /> : <HandleAuth />}

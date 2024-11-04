@@ -6,10 +6,11 @@ import Popular from './components/Pages/Popular';
 import Search from './components/Pages/Search';
 import Wishlist from './components/Pages/Wishlist';
 import Profile from './components/Pages/Profile';
+import Signin from './components/Auth/Signin';
 
 // ProtectedRoute 컴포넌트 정의
 function ProtectedRoute({ children }) {
-  const isAuthenticated = sessionStorage.getItem('isLoggedIn');
+  const isAuthenticated = JSON.parse(localStorage.getItem('isLoggedIn'));
   return isAuthenticated ? children : <Navigate to="/signin" />;
 }
 
@@ -23,6 +24,7 @@ function AppRouter() {
         <Route path="/search" element={<ProtectedRoute><Search /></ProtectedRoute>} />
         <Route path="/wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
         <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+        <Route path="/Signin" element={<Signin />}></Route>
       </Routes>
     </div>
   );

@@ -12,7 +12,7 @@ function HandleAuth() {
 
   // useEffect를 사용해 로그인 상태를 확인하고 리다이렉트
   useEffect(() => {
-    const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+    const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
     if (isLoggedIn === 'true') {
       navigate('/'); // 로그인 후 이동할 경로
     }
