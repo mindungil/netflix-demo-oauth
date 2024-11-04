@@ -27,6 +27,7 @@ function AppRouter() {
           <Route path="/wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           <Route path="/signin" element={<Signin />} />
+          <Route path="/register" element={<Register />}/>
         </Routes>
 
       </div>

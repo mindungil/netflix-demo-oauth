@@ -1,5 +1,6 @@
 // src/components/Auth/Register.js
 import React, { useState } from 'react';
+import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
@@ -16,7 +17,7 @@ function Register() {
     return regex.test(email);
   };
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
     if (password !== confirmPassword) {
       toast.error('비밀번호가 일치하지 않습니다.', {
         position: "top-center",
@@ -27,7 +28,7 @@ function Register() {
         draggable: true,
         progress: undefined,
         theme: "light",
-        });
+      });
       return;
     }
     if (!validateEmail(email)) {
@@ -40,7 +41,7 @@ function Register() {
         draggable: true,
         progress: undefined,
         theme: "light",
-        });
+      });
       return;
     }
     if (!termsAccepted) {
@@ -53,13 +54,52 @@ function Register() {
         draggable: true,
         progress: undefined,
         theme: "light",
-        });
+      });
       return;
     }
 
-    localStorage.setItem('email', email);
-    localStorage.setItem('password', password);
-    navigate('/signin');
+    try {
+      const response = await axios.post('/api/auth/register', {
+        email: email,
+        password: password,
+      });
+
+      if (response.data.success) {
+        toast.success('회원가입이 성공적으로 완료되었습니다!', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        navigate('/signin');
+      } else {
+        toast.error('회원가입에 실패했습니다.', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
+    } catch (error) {
+      toast.error('서버에 문제가 발생했습니다.', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
   };
 
   return (

@@ -1,22 +1,50 @@
 // src/components/Auth/Signin.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './Signin.css';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Signin() {
-  const [email, setEmail] = useState(' ');
-  const [password, setPassword] = useState(' ');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    const storedEmail = localStorage.getItem('email');
-    const storedPassword = localStorage.getItem('password');
-    if (email === storedEmail && password === storedPassword) {
-      localStorage.setItem('isLoggedIn', true);
-      navigate('/');
-      toast.success('로그인에 성공하였습니다.', {
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post('/api/auth/login', {
+        email: email,
+        password: password,
+      });
+
+      if (response.data.success) {
+        localStorage.setItem('isLoggedIn', true);
+        navigate('/');
+        toast.success('로그인에 성공하였습니다.', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      } else {
+        toast.error('로그인에 실패했습니다.', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
+    } catch (error) {
+      toast.error('서버에 문제가 발생했습니다.', {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -25,18 +53,7 @@ function Signin() {
         draggable: true,
         progress: undefined,
         theme: "light",
-        });
-    } else {
-      toast.error('로그인에 실패했습니다.', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        });
+      });
     }
   };
 
