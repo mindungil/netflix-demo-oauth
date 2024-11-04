@@ -10,15 +10,33 @@ function Signin({ toggleAuth }) {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    // 간단한 localStorage 기반 인증 로직
-    if (email === 'test@example.com' && password === 'password123') {
-      localStorage.setItem('isLoggedIn', 'true');
+    // localStorage에서 등록된 사용자 정보를 가져옴
+    const userKey = localStorage.getItem('registeredUser');
+    let userData = null;
+  
+    if (userKey) {
+      try {
+        userData = JSON.parse(userKey);
+        console.log('User data found:', userData); // 디버깅 로그 추가
+      } catch (error) {
+        console.error('JSON 파싱 오류:', error);
+        toast.error('데이터를 가져오는 데 문제가 발생했습니다.');
+        return;
+      }
+    } else {
+      console.log('No user data found');
+    }
+  
+    if (!userData || email !== userData.email || password !== userData.password) {
+      console.log('로그인 실패 조건 실행');
+      toast.error('로그인에 실패했습니다. 이메일 또는 비밀번호를 확인하세요.');
+    } else {
+      console.log('로그인 성공 조건 실행');
+      sessionStorage.setItem('isLoggedIn', 'true');
       toast.success('로그인에 성공하였습니다.');
       navigate('/');
-    } else {
-      toast.error('로그인에 실패했습니다. 이메일 또는 비밀번호를 확인하세요.');
     }
-  };
+  };  
 
   return (
     <div className="signin-container">

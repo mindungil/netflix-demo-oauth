@@ -6,11 +6,10 @@ import Popular from './components/Popular';
 import Search from './components/Search';
 import Wishlist from './components/Wishlist';
 import Profile from './components/Profile';
-import Signin from './components/Auth/Signin';
 
 // ProtectedRoute 컴포넌트 정의
 function ProtectedRoute({ children }) {
-  const isAuthenticated = localStorage.getItem('isLoggedIn');
+  const isAuthenticated = sessionStorage.getItem('isLoggedIn');
   return isAuthenticated ? children : <Navigate to="/signin" />;
 }
 
