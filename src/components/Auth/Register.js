@@ -1,8 +1,6 @@
 // src/components/Auth/Register.js
 import React, { useState } from 'react';
-import axios from 'axios';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
 function Register({ toggleAuth }) {
@@ -12,94 +10,19 @@ function Register({ toggleAuth }) {
   const [termsAccepted, setTermsAccepted] = useState(false);
   const navigate = useNavigate();
 
-  const validateEmail = (email) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-  };
-
-  const handleRegister = async () => {
+  const handleRegister = () => {
     if (password !== confirmPassword) {
-      toast.error('비밀번호가 일치하지 않습니다.', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (!validateEmail(email)) {
-      toast.error('이메일 형식이 옳지 않습니다.', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.error('비밀번호가 일치하지 않습니다.');
       return;
     }
     if (!termsAccepted) {
-      toast.error('약관에 동의해야 합니다.', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.error('약관에 동의해야 합니다.');
       return;
     }
-
-    try {
-      const response = await axios.post('/api/auth/register', {
-        email: email,
-        password: password,
-      });
-
-      if (response.data.success) {
-        toast.success('회원가입이 성공적으로 완료되었습니다!', {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
-        navigate('/signin');
-      } else {
-        toast.error('회원가입에 실패했습니다.', {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
-      }
-    } catch (error) {
-      toast.error('서버에 문제가 발생했습니다.', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-    }
+    // 회원가입 성공 처리
+    localStorage.setItem('registeredUser', JSON.stringify({ email, password }));
+    toast.success('회원가입이 성공적으로 완료되었습니다!');
+    toggleAuth();
   };
 
   return (
@@ -133,7 +56,6 @@ function Register({ toggleAuth }) {
       </label>
       <button onClick={handleRegister}>회원가입</button>
       <button onClick={toggleAuth}>로그인</button>
-      <ToastContainer />
     </div>
   );
 }
