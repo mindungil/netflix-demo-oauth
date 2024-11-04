@@ -1,14 +1,14 @@
 // App.js
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import HandleAuth from './components/Auth/HandleAuth';
 import AppRouter from './AppRouter';
 import './App.css';
+import { Header } from './components/Header/Header';
 
 function App() {
-  return (
+  return (  
     <Router>
-      <HandleAuth />
+      <Header />
       <AppRouter />
     </Router>
   );
