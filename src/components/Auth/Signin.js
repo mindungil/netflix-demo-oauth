@@ -1,59 +1,22 @@
 // src/components/Auth/Signin.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import './Signin.css';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 function Signin({ toggleAuth }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
-    try {
-      const response = await axios.get('/api/auth/login', {
-        email: email,
-        password: password,
-      });
-
-      if (response.data.success) {
-        localStorage.setItem('isLoggedIn', true);
-        navigate('/');
-        toast.success('로그인에 성공하였습니다.', {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
-      } else {
-        toast.error('로그인에 실패했습니다.', {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
-      }
-    } catch (error) {
-      toast.error('서버에 문제가 발생했습니다.', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+  const handleLogin = () => {
+    // 간단한 localStorage 기반 인증 로직
+    if (email === 'test@example.com' && password === 'password123') {
+      localStorage.setItem('isLoggedIn', 'true');
+      toast.success('로그인에 성공하였습니다.');
+      navigate('/');
+    } else {
+      toast.error('로그인에 실패했습니다. 이메일 또는 비밀번호를 확인하세요.');
     }
   };
 
