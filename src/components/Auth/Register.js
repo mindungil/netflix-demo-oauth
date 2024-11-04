@@ -5,7 +5,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 
-function Register() {
+function Register({ toggleAuth }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -132,6 +132,7 @@ function Register() {
         약관에 동의합니다
       </label>
       <button onClick={handleRegister}>회원가입</button>
+      <button onClick={toggleAuth}>로그인</button>
       <ToastContainer />
     </div>
   );

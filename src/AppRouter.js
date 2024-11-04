@@ -7,7 +7,6 @@ import Search from './components/Search';
 import Wishlist from './components/Wishlist';
 import Profile from './components/Profile';
 import Signin from './components/Auth/Signin';
-import Register from './components/Auth/Register';
 
 // ProtectedRoute 컴포넌트 정의
 function ProtectedRoute({ children }) {
@@ -26,8 +25,6 @@ function AppRouter() {
           <Route path="/search" element={<ProtectedRoute><Search /></ProtectedRoute>} />
           <Route path="/wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-          <Route path="/signin" element={<Signin />} />
-          <Route path="/register" element={<Register />}/>
         </Routes>
 
       </div>

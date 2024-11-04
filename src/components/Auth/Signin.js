@@ -6,14 +6,14 @@ import './Signin.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function Signin() {
+function Signin({ toggleAuth }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('/api/auth/login', {
+      const response = await axios.get('/api/auth/login', {
         email: email,
         password: password,
       });
@@ -76,6 +76,7 @@ function Signin() {
         <input type="checkbox" /> Remember me
       </label>
       <button onClick={handleLogin}>로그인</button>
+      <button onClick={toggleAuth}>회원가입</button>
     </div>
   );
 }
