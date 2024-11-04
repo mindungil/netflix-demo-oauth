@@ -1,11 +1,11 @@
 // src/AppRouter.js
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Home from './components/Home';
-import Popular from './components/Popular';
-import Search from './components/Search';
-import Wishlist from './components/Wishlist';
-import Profile from './components/Profile';
+import Home from './components/Pages/Home';
+import Popular from './components/Pages/Popular';
+import Search from './components/Pages/Search';
+import Wishlist from './components/Pages/Wishlist';
+import Profile from './components/Pages/Profile';
 
 // ProtectedRoute 컴포넌트 정의
 function ProtectedRoute({ children }) {
