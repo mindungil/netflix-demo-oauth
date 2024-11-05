@@ -1,10 +1,11 @@
 import React from 'react';
+import { API_URL, API_KEY, EMAGE_URL, EMAGE_BASE_URL } from '../config';
 
 const MovieItem = ({ movie }) => {
   return (
     <div className="movie-item">
       <img
-        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+        src={EMAGE_URL + movie.poster_path}
         alt={movie.title}
       />
       <h3>{movie.title}</h3>
@@ -14,3 +15,4 @@ const MovieItem = ({ movie }) => {
 };
 
 export default MovieItem;
+ 
