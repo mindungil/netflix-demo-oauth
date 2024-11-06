@@ -9,7 +9,8 @@ const MovieItem = ({ movie }) => {
         alt={movie.title}
       />
       <h3>{movie.title}</h3>
-      <p>{movie.overview}</p>
+      <p>{movie.vote_everage}</p>
+      <p>{movie.release_date}</p>
     </div>
   );
 };
