@@ -1,6 +1,6 @@
 .movie-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3개의 열 생성 */
+    /* grid-template-columns: repeat(3, 1fr); 3개의 열 생성 */
     gap: 20px; /* 포스터 사이 간격 */
     padding-top: 60px; /* 네비게이션 바와 겹치지 않도록 상단 여백 */
   }
