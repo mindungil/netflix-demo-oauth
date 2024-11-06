@@ -1,19 +1,23 @@
 import axios from 'axios';
+import { API_ACCESS, API_URL } from '../config';
 
-export function PopularApi (page) {
+export async function PopularApi(page) {
   const options = {
     method: 'GET',
-    url: 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=ko-KR&page='+page+'&sort_by=popularity.desc',
+    url: `${API_URL}/discover/movie?include_adult=false&include_video=false&language=ko-KR&page=${page}&sort_by=popularity.desc`,
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MTFkMDZiZGE3ZmQ1YjZiYTY0NjA2MGJkOTlmYjY0OCIsIm5iZiI6MTczMDg1Njg2MC4wNDE3NzI4LCJzdWIiOiI2NzI2MDM2ODM2OTVjNzZkNzExODMyMDAiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.6DEWyIlwL4lMkob3BsLAb0W45nUdBfo35KELbX8aOn0'
+      Authorization: API_ACCESS
     }
   };
-  
-  axios
-    .request(options)
-    .then(res => result = (res.data))
-    .catch(err => console.error(err));
 
-    return result;
+  try {
+    const res = await axios.request(options);
+    const movie = res.data.results;  // 결과를 할당
+    console.log(movie);
+    return movie;
+  } catch (err) {
+    console.error(err);
+    return null;  // 오류 발생 시 null 반환
+  }
 }
