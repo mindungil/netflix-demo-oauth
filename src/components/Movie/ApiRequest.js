@@ -18,6 +18,5 @@ export async function PopularApi(page) {
     return movie;
   } catch (err) {
     console.error(err);
-    return null;  // 오류 발생 시 null 반환
   }
 }
