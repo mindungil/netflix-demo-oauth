@@ -1,7 +1,8 @@
-/* App.css */
 body {
-  font-family: Arial, sans-serif;
-  color: white;
-  background-color: #181818;
   margin: 0;
+  padding-top: 60px; /* 전체 페이지에 상단 여백 추가 */
+}
+
+.nav + * {
+  padding-top: 60px; /* 네비게이션 바 아래 여백 추가 */
 }
