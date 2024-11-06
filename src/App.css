@@ -3,6 +3,3 @@ body {
   padding-top: 60px; /* 전체 페이지에 상단 여백 추가 */
 }
 
-.nav + * {
-  padding-top: 60px; /* 네비게이션 바 아래 여백 추가 */
-}
