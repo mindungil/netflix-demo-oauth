@@ -1,30 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import MovieItem from './MovieItem'; // 영화 항목을 표시할 컴포넌트
-import ApiRequest from './ApiRequest';
+import MovieItem from './MovieItem';
+import { fetchMovies } from './ApiRequest';
 
 const MovieList = () => {
-  const [movies, setMovies] = useState([]); // 상태 정의
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  useEffect(()=> {
-      const fetchMovies = async () => {
-        const movieData = await ApiRequest();
-        if(Array.isArray(movieData)) {
-          setMovies(movieData);
-        } else {
-          console.error("API response is not an array", movieData);
-          setMovies([]);
-        }
-      };
+  useEffect(() => {
+    const loadMovies = async () => {
+      try {
+        const data = await fetchMovies(); // API 호출
+        setMovies(data); // 데이터 설정
+      } catch (err) {
+        setError("영화 데이터를 불러오는 데 실패했습니다.");
+      } finally {
+        setLoading(false); // 로딩 상태 종료
+      }
+    };
 
-      fetchMovies();
-  }, [])
-  setMovies(() => ApiRequest);
-  
+    loadMovies();
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+
   return (
     <div>
-      {console.log("hello")}
       {movies.map((movie) => (
-        <MovieItem key={movie.id} movie={movie} /> // 각 영화를 MovieItem 컴포넌트에 매핑
+        <MovieItem key={movie.id} movie={movie} />
       ))}
     </div>
   );

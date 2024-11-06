@@ -4,7 +4,6 @@ import './Popular.css';
 import MovieList from '../Movie/MovieList';
 
 function Popular() {
-  const [items] = useState(["Movie 1", "Movie 2", "Movie 3"]);
 
   return (
     <div className="popular">
