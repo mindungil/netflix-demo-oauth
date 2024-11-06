@@ -13,9 +13,9 @@ export async function PopularApi(page) {
 
   try {
     const res = await axios.request(options);
-    const movie = res.data.results;  // 결과를 할당
+    const movies = res.data.results;  // 결과를 할당
     console.log(movie);
-    return movie;
+    return movies;
   } catch (err) {
     console.error(err);
   }
