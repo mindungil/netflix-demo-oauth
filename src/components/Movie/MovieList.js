@@ -11,7 +11,7 @@ const MovieList = () => {
         const response = await axios.get('https://api.themoviedb.org/3/movie/popular', {
           params: {
             api_key: 'YOUR_API_KEY', // TMDB API 키
-            language: 'en-US',
+            language: 'ko-KR',
             page: 1
           }
         });
