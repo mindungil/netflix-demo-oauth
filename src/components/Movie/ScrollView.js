@@ -28,17 +28,17 @@ const ScrollView = () => {
   }, [loadMovies]);
 
   useEffect(() => {
-    if (!hasMore) return;
-
     const handleScroll = () => {
-      if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight - 10) {
-        setPage((prev) => prev + 1);
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10) {
+        if (!loading && hasMore) {
+          setPage((prev) => prev + 1);
+        }
       }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [hasMore]);
+  }, [loading, hasMore]);
 
   if (loading && movies.length === 0) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
@@ -49,8 +49,11 @@ const ScrollView = () => {
         <MovieItem key={movie.id} movie={movie} />
       ))}
       {loading && <div className="loading">Loading...</div>}
-      <button className="top-button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-        Top
+      <button
+        className="top-button"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      >
+        ↑
       </button>
     </div>
   );

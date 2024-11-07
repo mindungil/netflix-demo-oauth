@@ -24,8 +24,9 @@
 }
 
 .pagination button {
-  padding: 8px 12px;
+  padding: 6px 10px; /* 버튼 크기 조정 */
   margin: 0 5px;
+  font-size: 0.9em;
 }
 
 .loading {
@@ -37,10 +38,16 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  padding: 8px 12px;
-  background-color: #333;
-  color: white;
+  width: 40px;
+  height: 40px;
+  background-color: #f1f1f1;
+  color: #333;
   border: none;
-  border-radius: 4px;
+  border-radius: 50%; /* 원형 스타일 */
+  font-size: 1.2em;
   cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
