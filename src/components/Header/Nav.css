@@ -1,23 +1,16 @@
-/* src/components/Nav.css */
-
 .nav {
-  display: flex;
-  justify-content: space-around; /* Links are evenly spaced */
-  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
   background-color: black;
-  padding: 10px 0;
-  width: 100%; /* Fill the entire width of the screen */
+  color: white;
+  font-weight: bold;
+  padding: 15px 0;
+  z-index: 1; /* 다른 콘텐츠보다 위에 오도록 설정 */
 }
 
 .nav-link {
   color: white;
   text-decoration: none;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px 15px; /* Add padding around links */
-  transition: color 0.3s ease;
-}
-
-.nav-link:hover {
-  color: #1e90ff; /* Change color on hover */
+  margin: 0 15px;
 }
