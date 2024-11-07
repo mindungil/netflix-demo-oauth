@@ -1,11 +1,11 @@
 import React from 'react';
-import { EMAGE_URL_300 } from '../config';
+import { EMAGE_URL_200 } from '../config';
 
 const MovieItem = ({ movie }) => {
   return (
     <div className="movie-item">
       <img
-        src={EMAGE_URL_300 + movie.poster_path}
+        src={EMAGE_URL_200 + movie.poster_path}
         alt={movie.title}
       />
       <h3>{movie.title}</h3>
