@@ -3,7 +3,7 @@ import MovieItem from './MovieItem';
 import { fetchMovies } from './ApiRequest';
 import './MovieList.css';
 
-const MovieList = () => {
+const MovieList = ({view}) => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -27,11 +27,23 @@ const MovieList = () => {
   if (error) return <div>{error}</div>;
 
   return (
-    <div className='movie-list'>
-      {movies.map((movie) => (
-        <MovieItem key={movie.id} movie={movie} />
-      ))}
-    </div>
+    <>
+      {
+        view ? (
+          <div className='movie-list'>
+          {movies.map((movie) => (
+            <MovieItem key={movie.id} movie={movie} />
+          ))}
+        </div>
+        ) : (
+          <div className='movie-list'>
+          {movies.map((movie) => (
+            <MovieItem key={movie.id} movie={movie} />
+          ))}
+        </div>
+        )
+      }
+    </>
   );
 };
 
