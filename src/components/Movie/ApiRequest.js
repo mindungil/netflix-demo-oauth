@@ -3,13 +3,13 @@ import { API_ACCESS, API_URL } from '../config';
 
 export const fetchMovies = async () => {
   try {
-    const res = await axios.get(`${API_URL}/discover/movie`, {
+    const res = await axios.get(`${API_URL}/movie/popular`, {
       params: {
-        include_adult: false,
-        include_video: false,
+        // include_adult: false,
+        // include_video: false,
         language: 'ko-KR',
         page: 1,
-        sort_by: 'popularity.desc'
+        // sort_by: 'popularity.desc'
       },
       headers: {
         accept: 'application/json',

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MovieItem from './MovieItem';
 import { fetchMovies } from './ApiRequest';
+import './MovieList.css';
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
@@ -26,7 +27,7 @@ const MovieList = () => {
   if (error) return <div>{error}</div>;
 
   return (
-    <div>
+    <div className='movie-list'>
       {movies.map((movie) => (
         <MovieItem key={movie.id} movie={movie} />
       ))}

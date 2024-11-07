@@ -3,3 +3,6 @@ body {
   padding-top: 60px; /* 전체 페이지에 상단 여백 추가 */
 }
 
+*{
+  background-color: black;
+}
