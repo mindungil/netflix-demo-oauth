@@ -42,11 +42,11 @@ const TableView = () => {
       ))}
       <div className="pagination">
         <button onClick={() => goToPage(page - 1)} disabled={page === 1}>
-          Previous
+          이전
         </button>
         <span>Page {page}</span>
         <button onClick={() => goToPage(page + 1)} disabled={!hasMore}>
-          Next
+          다음
         </button>
       </div>
     </div>

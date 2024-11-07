@@ -12,26 +12,63 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
-.movie-item {
-  text-align: center;
-  margin: 10px;
-}
-
 .pagination {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  justify-content: center;
-  margin-top: 20px;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.8em;
+  background: none; /* 불필요한 배경 색상 제거 */
+  z-index: 1000; /* 페이지 상단에 고정 */
+  padding: 5px; /* 버튼 간격 조정 */
 }
 
 .pagination button {
-  padding: 6px 10px; /* 버튼 크기 조정 */
-  margin: 0 5px;
+  padding: 4px 8px;
   font-size: 0.9em;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+  background-color: #555;
+}
+
+.pagination span {
+  color: #333;
+  font-size: 1em;
 }
 
 .loading {
-  text-align: center;
-  margin-top: 20px;
+  --hloader-color: #e96900;
+  --hloader-size: 55px;
+  --hloader-weight: 8px;
+  --hloader-duration: 1s;
+  width: var(--hloader-size);
+  height: var(--hloader-size);
+  color: var(--hloader-color);
+  border: var(--hloader-weight) solid;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: hloader var(--hloader-duration) infinite linear;
+
+  /* 하단 중앙에 고정 위치 */
+  position: fixed;
+  bottom: 20px; /* 하단에서 간격을 줌 */
+  left: 50%;
+  transform: translateX(-50%);
+}
+@keyframes hloader {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .top-button {
