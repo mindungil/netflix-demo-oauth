@@ -30,6 +30,7 @@ const TableView = () => {
   const goToPage = (newPage) => {
     setPage(newPage);
     window.scrollTo({ top: 0, behavior: 'smooth' }); // 페이지 상단으로 이동
+    console.log("go to page");
   };
 
   if (loading && movies.length === 0) return <div>Loading...</div>;

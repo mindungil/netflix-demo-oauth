@@ -14,16 +14,17 @@
 
 .pagination {
   position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: row;
-  align-items: center;
   gap: 10px;
   font-size: 0.8em;
   background: none; /* 불필요한 배경 색상 제거 */
-  z-index: 1000; /* 페이지 상단에 고정 */
   padding: 5px; /* 버튼 간격 조정 */
 }
 
@@ -31,7 +32,7 @@
   padding: 4px 8px;
   font-size: 0.9em;
   border: none;
-  background-color: #333;
+  background-color: none;
   color: #fff;
   border-radius: 4px;
   cursor: pointer;
@@ -43,7 +44,8 @@
 }
 
 .pagination span {
-  color: #333;
+  color: none;
+  background-color: transparent;
   font-size: 1em;
 }
 
