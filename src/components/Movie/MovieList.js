@@ -1,3 +1,6 @@
+//사용하지 않음
+
+
 import React, { useEffect, useState, useCallback } from 'react';
 import MovieItem from './MovieItem';
 import { fetchMovies } from './ApiRequest';
