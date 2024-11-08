@@ -10,12 +10,14 @@ export const EMAGE_URL_300 = 'https://image.tmdb.org/t/p/w300/';
 export const EMAGE_URL_200 = 'https://image.tmdb.org/t/p/w200/';
 export const API_ACCESS = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MTFkMDZiZGE3ZmQ1YjZiYTY0NjA2MGJkOTlmYjY0OCIsIm5iZiI6MTczMDg1Njg2MC4wNDE3NzI4LCJzdWIiOiI2NzI2MDM2ODM2OTVjNzZkNzExODMyMDAiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.6DEWyIlwL4lMkob3BsLAb0W45nUdBfo35KELbX8aOn0';
 
-export function toLocalStorage(data) {
+export function addLocalStorage(data) {
     const localData = JSON.parse(localStorage.getItem('wishlist')) || [];
     localData.push(data);
-    localStorage.setItem(JSON.stringify(localData));
+    localStorage.setItem('wishlist', JSON.stringify(localData));
 } //localStorage로 데이터 저장
 
-export const LStoSV = () => {
-
+export function delLocalStorage(data) {
+    const localData = JSON.parse(localStorage.getItem('wishlist')) || [];
+    const newData = localData.filter(item => item.id !== data.id);
+    delLocalStorage.setItem('wishlist', JSON.stringify(newData));
 } //localStorage에서 데이터 가져오기
