@@ -1,7 +1,7 @@
 import React from 'react';
 import { EMAGE_URL_200 } from '../config';
 import './MovieList.css';
-import { toLocalStorage } from '../config';
+import { checkLocalStorage } from '../config';
 
 const MovieItem = ({ movie }) => {
   return (
@@ -10,7 +10,7 @@ const MovieItem = ({ movie }) => {
         src={EMAGE_URL_200 + movie.poster_path}
         alt={movie.title}
         className="zoom-in"
-        onClick={() => toLocalStorage(movie)}
+        onClick={() => checkLocalStorage(movie)}
       />
       <h3>{movie.title}</h3>
       <p style={{margin: 0}}>평점 : {movie.vote_average.toFixed(1)}</p>
