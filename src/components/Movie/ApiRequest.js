@@ -19,3 +19,24 @@ export const fetchMovies = async (page = 1) => {
     throw err;
   }
 };
+export const searchMovies = async (name) => {
+  try {
+    const res = await axios.get(`${API_URL}/search/movie`, {
+      params: {
+        query: name,
+        include_adult: false,
+        language: ko-KR,
+        page: 1
+      },
+      headers: {
+        accept: 'application/json',
+        Authorization: API_ACCESS,
+      }
+    });
+
+    return res.data.results;
+  } catch(err) {
+    console.error('API 요청 오류: ', arr);
+    throw arr;
+  }
+};
