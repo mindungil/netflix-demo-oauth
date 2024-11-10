@@ -38,17 +38,13 @@ export const fetchGenres = async () => {
   }
 };
 
-export const searchMovies = async (name, genre, rating, sortOption) => {
+export const searchMovies = async (name) => {
   try {
     const res = await axios.get(`${API_URL}/search/movie`, {
       params: {
         query: name,
         include_adult: false,
         language: 'ko-KR',
-        page: 1,
-        with_genres: genre || undefined, // genre가 있을 때만 with_genres를 추가
-        'vote_average.gte': rating || undefined, // rating이 있을 때만 vote_average.gte 추가
-        sort_by: sortOption || 'popularity.desc' // sortOption이 없으면 기본값 설정
       },
       headers: {
         accept: 'application/json',
@@ -61,3 +57,4 @@ export const searchMovies = async (name, genre, rating, sortOption) => {
     throw err;
   }
 };
+

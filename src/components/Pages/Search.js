@@ -20,8 +20,33 @@ function Search() {
   }, []);
 
   const handleSearch = async () => {
-    const results = await searchMovies(query, selectedGenre, rating, sortOption);
-    setMovies(results || []);
+    const results = await searchMovies(query);
+    let filteredMovies = results;
+
+    // Genre filter
+    if (selectedGenre) {
+      filteredMovies = filteredMovies.filter((movie) =>
+        movie.genre_ids.includes(parseInt(selectedGenre))
+      );
+    }
+
+    // Rating filter
+    if (rating) {
+      filteredMovies = filteredMovies.filter((movie) =>
+        movie.vote_average >= parseFloat(rating)
+      );
+    }
+
+    // Sort options
+    if (sortOption === 'popularity.desc') {
+      filteredMovies = filteredMovies.sort((a, b) => b.popularity - a.popularity);
+    } else if (sortOption === 'release_date.desc') {
+      filteredMovies = filteredMovies.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
+    } else if (sortOption === 'vote_average.desc') {
+      filteredMovies = filteredMovies.sort((a, b) => b.vote_average - a.vote_average);
+    }
+
+    setMovies(filteredMovies);
   };
 
   return (
