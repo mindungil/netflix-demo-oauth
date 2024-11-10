@@ -9,11 +9,23 @@
 
 .search-controls {
   display: flex;
-  justify-content: flex-end;
+  flex-wrap: nowrap;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 5px; /* 요소 간격을 줄임 */
   margin-bottom: 20px;
-  flex-wrap: wrap; /* 가로로 정렬이 강제될 수 있도록 수정 */
+}
+
+.search-top {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* 검색창과 버튼 간격을 줄임 */
+}
+
+.search-filter {
+  display: flex;
+  flex-direction: row;
+  gap: 5px; /* 필터링 요소 간의 간격을 줄임 */
 }
 
 .search-input, select, button {
@@ -22,46 +34,15 @@
   border: 1px solid #555;
   padding: 8px;
   border-radius: 4px;
-  min-width: 120px; /* 버튼과 필터의 최소 너비 지정 */
+  min-width: 120px;
 }
 
 .search-input::placeholder {
   color: #999;
 }
 
-button {
-  cursor: pointer;
-}
-
 .search-results {
   display: grid;
   grid-template-columns: repeat(3, minmax(200px, 1fr));
   gap: 20px;
-}
-
-.movie-item img {
-  width: 100%;
-  height: auto;
-  cursor: pointer;
-}
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.pagination button {
-  padding: 8px 16px;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: #333;
-  color: white;
-  border: 1px solid #555;
-}
-
-.pagination span {
-  font-size: 18px;
 }

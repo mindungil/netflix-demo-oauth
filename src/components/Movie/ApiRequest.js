@@ -38,13 +38,14 @@ export const fetchGenres = async () => {
   }
 };
 
-export const searchMovies = async (name) => {
+export const searchMovies = async (name, page = 1) => {
   try {
     const res = await axios.get(`${API_URL}/search/movie`, {
       params: {
         query: name,
         include_adult: false,
         language: 'ko-KR',
+        page, // 페이지 파라미터 추가
       },
       headers: {
         accept: 'application/json',
