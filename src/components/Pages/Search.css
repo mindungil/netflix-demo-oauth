@@ -13,7 +13,7 @@
   align-items: center;
   gap: 10px;
   margin-bottom: 20px;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* 가로로 정렬이 강제될 수 있도록 수정 */
 }
 
 .search-input, select, button {
@@ -22,9 +22,8 @@
   border: 1px solid #555;
   padding: 8px;
   border-radius: 4px;
-  min-width: 120px;
+  min-width: 120px; /* 버튼과 필터의 최소 너비 지정 */
 }
-
 
 .search-input::placeholder {
   color: #999;

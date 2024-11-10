@@ -65,7 +65,7 @@ function Search() {
           {genres.map((genre) => (
             <option key={genre.id} value={genre.id}>{genre.name}</option>
           ))}
-        </select>
+          </select>
         <select value={rating} onChange={(e) => setRating(e.target.value)}>
           <option value="">모든 평점</option>
           <option value="8">8점 이상</option>
