@@ -53,3 +53,11 @@
   font-size: 1.2em;
   margin: 20px 0;
 }
+
+.scroll-message {
+  position: relative;
+  transform: translateY(0%);   
+  background-color: transparent;
+  padding: 10px;
+}
+

@@ -14,7 +14,8 @@ function Search() {
   const [sortOption, setSortOption] = useState('popularity.desc');
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [initialLoading, setInitialLoading] = useState(false);
+  const [isEndOfList, setIsEndOfList] = useState(false);
+  const [initialLoading, setInitialLoading] = useState(true); // 초기 로딩 표시용 상태
 
   useEffect(() => {
     const loadGenres = async () => {
@@ -25,19 +26,23 @@ function Search() {
   }, []);
 
   const fetchAllMovies = async () => {
-    setInitialLoading(true); // 초기 로딩 상태를 시작합니다.
     setLoading(true);
+    setIsEndOfList(false);
+    setInitialLoading(true); // 초기 로딩 시작
     const allResults = [];
 
     for (let i = 1; i <= 30; i++) {
       const results = await searchMovies(query, i);
+      if (results.length === 0) {
+        break; // 페이지가 비어 있으면 루프 중지
+      }
       allResults.push(...results);
     }
 
     setAllMovies(allResults);
     filterAndSetMovies(allResults);
     setLoading(false);
-    setInitialLoading(false); // 로딩이 완료되면 문구가 사라지도록 합니다.
+    setInitialLoading(false); // 초기 로딩 종료
   };
 
   const filterAndSetMovies = (movies) => {
@@ -64,14 +69,13 @@ function Search() {
     }
 
     setMovies(filteredMovies.slice(0, 20 * page));
+    setIsEndOfList(filteredMovies.length <= 20 * page);
   };
 
   const loadMoreMovies = () => {
-    if (loading) return;
-    setLoading(true);
+    if (loading || isEndOfList) return;
     setPage((prevPage) => prevPage + 1);
     filterAndSetMovies(allMovies);
-    setLoading(false);
   };
 
   const handleSearch = () => {
@@ -88,6 +92,7 @@ function Search() {
     setPage(1);
     setMovies([]);
     setAllMovies([]);
+    setIsEndOfList(false);
   };
 
   useEffect(() => {
@@ -102,7 +107,7 @@ function Search() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [page, allMovies, selectedGenre, rating, sortOption]);
+  }, [page, allMovies, selectedGenre, rating, sortOption, isEndOfList]);
 
   return (
     <div className="search">
@@ -136,21 +141,19 @@ function Search() {
         <button className="small-button" onClick={handleResetFilters}>Reset</button>
       </div>
 
-      {/* 초기 로딩 중일 때 표시하는 안내 문구 */}
-      {initialLoading && (
-        <div className="loading-message">
-          데이터가 많아 30초 정도 걸릴 수 있습니다.
-        </div>
-      )}
-
+      {initialLoading && <div className="loading-message">데이터가 많아, 30초 정도 걸릴 수 있습니다.</div>} {/* 초기 로딩 문구 */}
       <div className="search-results">
         {movies.map((movie) => (
           <MovieItem key={movie.id} movie={movie} />
         ))}
       </div>
       
-      {/* 추가 로딩 시 로딩 애니메이션 표시 */}
       {loading && <div className="loading">Loading...</div>}
+      
+      {/* 하단에 고정된 추가 문구 표시 */}
+      <div className="scroll-message">
+        {movies.length > 0 && (isEndOfList ? "마지막 페이지 입니다." : "페이지를 내리면 추가 목록이 나타납니다.")}
+      </div>
     </div>
   );
 }
