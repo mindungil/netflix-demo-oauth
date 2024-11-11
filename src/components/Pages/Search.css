@@ -1,10 +1,64 @@
-/* Search.css */
 .search {
-    text-align: center;
-    margin-top: 2rem;
-  }
-  
-  .search-results {
-    margin-top: 1rem;
-  }
-  
+  padding: 20px;
+  margin-top: 40px;
+  color: #fff;
+}
+
+.search h2 {
+  text-align: center;
+}
+
+.search-controls {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px; /* 요소 간격을 줄임 */
+  margin-bottom: 20px;
+}
+
+.search-top {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* 검색창과 버튼 간격을 줄임 */
+}
+
+.search-filter {
+  display: flex;
+  flex-direction: row;
+  gap: 5px; /* 필터링 요소 간의 간격을 줄임 */
+}
+
+.search-input, select, button {
+  color: #fff;
+  background-color: #333;
+  border: 1px solid #555;
+  padding: 8px;
+  border-radius: 4px;
+  min-width: 120px;
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+
+.search-results {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.loading-message {
+  text-align: center;
+  color: #ffcc00;
+  font-size: 1.2em;
+  margin: 20px 0;
+}
+
+.scroll-message {
+  position: relative;
+  transform: translateY(0%);   
+  background-color: transparent;
+  padding: 10px;
+}
+
