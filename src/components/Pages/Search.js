@@ -7,12 +7,14 @@ import MovieItem from '../Movie/MovieItem';
 function Search() {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
+  const [allMovies, setAllMovies] = useState([]);
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState('');
   const [rating, setRating] = useState('');
   const [sortOption, setSortOption] = useState('popularity.desc');
   const [page, setPage] = useState(1);
-  const [hasNextPage, setHasNextPage] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [initialLoading, setInitialLoading] = useState(false);
 
   useEffect(() => {
     const loadGenres = async () => {
@@ -22,9 +24,24 @@ function Search() {
     loadGenres();
   }, []);
 
-  const handleSearch = async (pageNum = 1) => {
-    const results = await searchMovies(query, pageNum);
-    let filteredMovies = results;
+  const fetchAllMovies = async () => {
+    setInitialLoading(true); // 초기 로딩 상태를 시작합니다.
+    setLoading(true);
+    const allResults = [];
+
+    for (let i = 1; i <= 30; i++) {
+      const results = await searchMovies(query, i);
+      allResults.push(...results);
+    }
+
+    setAllMovies(allResults);
+    filterAndSetMovies(allResults);
+    setLoading(false);
+    setInitialLoading(false); // 로딩이 완료되면 문구가 사라지도록 합니다.
+  };
+
+  const filterAndSetMovies = (movies) => {
+    let filteredMovies = movies;
 
     if (selectedGenre) {
       filteredMovies = filteredMovies.filter((movie) =>
@@ -46,8 +63,21 @@ function Search() {
       filteredMovies = filteredMovies.sort((a, b) => b.vote_average - a.vote_average);
     }
 
-    setMovies(filteredMovies.slice(0, 20));
-    setHasNextPage(filteredMovies.length === 20);
+    setMovies(filteredMovies.slice(0, 20 * page));
+  };
+
+  const loadMoreMovies = () => {
+    if (loading) return;
+    setLoading(true);
+    setPage((prevPage) => prevPage + 1);
+    filterAndSetMovies(allMovies);
+    setLoading(false);
+  };
+
+  const handleSearch = () => {
+    setMovies([]);
+    setPage(1);
+    fetchAllMovies();
   };
 
   const handleResetFilters = () => {
@@ -56,13 +86,23 @@ function Search() {
     setRating('');
     setSortOption('popularity.desc');
     setPage(1);
-    handleSearch(1);
+    setMovies([]);
+    setAllMovies([]);
   };
 
-  const handlePageChange = (newPage) => {
-    setPage(newPage);
-    handleSearch(newPage);
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      if (
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 10
+      ) {
+        loadMoreMovies();
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [page, allMovies, selectedGenre, rating, sortOption]);
 
   return (
     <div className="search">
@@ -92,23 +132,25 @@ function Search() {
           <option value="release_date.desc">최신 개봉순</option>
           <option value="vote_average.desc">평점순</option>
         </select>
-        <button onClick={() => handleSearch(1)}>Search</button>
-        <button onClick={handleResetFilters}>Reset Filters</button>
+        <button onClick={handleSearch}>Search</button>
+        <button className="small-button" onClick={handleResetFilters}>Reset</button>
       </div>
-      <div className={`search-results ${page === 1 ? 'page-1' : ''}`}>
+
+      {/* 초기 로딩 중일 때 표시하는 안내 문구 */}
+      {initialLoading && (
+        <div className="loading-message">
+          데이터가 많아 30초 정도 걸릴 수 있습니다.
+        </div>
+      )}
+
+      <div className="search-results">
         {movies.map((movie) => (
           <MovieItem key={movie.id} movie={movie} />
         ))}
       </div>
-      <div className="pagination">
-        <button onClick={() => handlePageChange(page - 1)} disabled={page === 1}>
-          이전
-        </button>
-        <span>{page}</span>
-        <button onClick={() => handlePageChange(page + 1)} disabled={!hasNextPage}>
-          다음
-        </button>
-      </div>
+      
+      {/* 추가 로딩 시 로딩 애니메이션 표시 */}
+      {loading && <div className="loading">Loading...</div>}
     </div>
   );
 }

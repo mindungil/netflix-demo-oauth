@@ -43,6 +43,13 @@
 
 .search-results {
   display: grid;
-  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
   gap: 20px;
+}
+
+.loading-message {
+  text-align: center;
+  color: #ffcc00;
+  font-size: 1.2em;
+  margin: 20px 0;
 }

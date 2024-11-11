@@ -59,3 +59,4 @@ export const searchMovies = async (name, page = 1) => {
   }
 };
 
+
