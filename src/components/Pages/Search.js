@@ -15,7 +15,7 @@ function Search() {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [isEndOfList, setIsEndOfList] = useState(false);
-  const [initialLoading, setInitialLoading] = useState(true); // 초기 로딩 표시용 상태
+  const [initialLoading, setInitialLoading] = useState(false); // Initialize as false
 
   useEffect(() => {
     const loadGenres = async () => {
@@ -28,13 +28,13 @@ function Search() {
   const fetchAllMovies = async () => {
     setLoading(true);
     setIsEndOfList(false);
-    setInitialLoading(true); // 초기 로딩 시작
+    setInitialLoading(true); // Start initial loading
     const allResults = [];
 
     for (let i = 1; i <= 30; i++) {
       const results = await searchMovies(query, i);
       if (results.length === 0) {
-        break; // 페이지가 비어 있으면 루프 중지
+        break; // Stop loop if no more results
       }
       allResults.push(...results);
     }
@@ -42,7 +42,7 @@ function Search() {
     setAllMovies(allResults);
     filterAndSetMovies(allResults);
     setLoading(false);
-    setInitialLoading(false); // 초기 로딩 종료
+    setInitialLoading(false); // End initial loading
   };
 
   const filterAndSetMovies = (movies) => {
@@ -141,19 +141,20 @@ function Search() {
         <button className="small-button" onClick={handleResetFilters}>Reset</button>
       </div>
 
-      {initialLoading && <div className="loading-message">데이터가 많아, 30초 정도 걸릴 수 있습니다.</div>} {/* 초기 로딩 문구 */}
+      {initialLoading && <div className="loading-animation">데이터가 많습니다. 30초 정도 걸릴 수 있습니다.</div>} {/* Initial loading message */}
+      
       <div className="search-results">
         {movies.map((movie) => (
           <MovieItem key={movie.id} movie={movie} />
         ))}
       </div>
-      
-      {loading && <div className="loading">Loading...</div>}
-      
-      {/* 하단에 고정된 추가 문구 표시 */}
-      <div className="scroll-message">
-        {movies.length > 0 && (isEndOfList ? "마지막 페이지 입니다." : "페이지를 내리면 추가 목록이 나타납니다.")}
-      </div>
+      <button
+        className="top-button"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      >
+        ↑
+      </button>
+      {loading && <div className="loading">Loading...</div>} {/* Loading animation at bottom */}
     </div>
   );
 }
