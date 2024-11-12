@@ -7,8 +7,8 @@ import { fetchTrends } from '../Movie/ApiRequest';
 function Home() {
   const [trend, setTrend] = useState([]);
   const [randomMovie, setRandomMovie] = useState(null);
-  const [opacity, setOpacity] = useState(0); // 이미지 투명도 상태 추가
-  
+  const [opacity, setOpacity] = useState(0);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -16,7 +16,7 @@ function Home() {
         setTrend(movies);
         if (movies.length > 0) {
           setRandomMovie(movies[0]);
-          setOpacity(1); // 첫 이미지의 투명도 설정
+          setOpacity(1);
         }
       } catch (err) {
         console.error('API 호출 실패: ', err);
@@ -24,20 +24,20 @@ function Home() {
     };
     fetchData();
   }, []);
-  
+
   useEffect(() => {
     if (trend.length > 0) {
       const intervalId = setInterval(() => {
-        setOpacity(0); // 투명하게 만들고
+        setOpacity(0);
         setTimeout(() => {
-          setRandomMovie(trend[getRandomMovie(trend.length)]);  
-          setOpacity(1); // 다음 이미지가 보이도록 투명도 조정
-        }, 1000); // 1초 후 이미지 전환
-      }, 7000); // 8초마다 전환
+          setRandomMovie(trend[getRandomMovie(trend.length)]);
+          setOpacity(1);
+        }, 1000);
+      }, 7000);
 
       return () => clearInterval(intervalId);
     }
-  }, [randomMovie, trend]);
+  }, [trend]);
 
   const getRandomMovie = (len) => Math.floor(Math.random() * len);
 
@@ -47,18 +47,26 @@ function Home() {
         <img 
           src={EMAGE_BASE_URL_1280 + randomMovie.backdrop_path}
           className="main-poster"
-          style={{ opacity }} // opacity 상태 적용
+          style={{ opacity }}
+          alt={randomMovie.title || "Movie Poster"}
         />
-      )
-      }
-      <div className="movie">
-        <p>{randomMovie.name}</p>
-        <p>{randomMovie.overview}</p>
+      )}
+      <div className="poster-inform">
+        {/* randomMovie가 null이 아닐 때만 title과 overview를 표시 */}
+        {randomMovie ? (
+          <>
+            <p>{randomMovie.title}</p>
+            <p>{randomMovie.overview}</p>
+          </>
+        ) : (
+          <p>영화를 불러오는 중...</p>
+        )}
       </div>
-      <br/>
-      <br/>
+      <br />
+      <br />
     </div>
   );
 }
+
 
 export default Home;
