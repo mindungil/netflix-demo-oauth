@@ -5,8 +5,9 @@ import MovieItem from '../Movie/MovieItem';
 import { fetchTrends } from '../Movie/ApiRequest';
 
 function Home() {
-  const [trend, setTrend] = useState([]); // 빈 배열로 초기화
-  const [randomMovie, setRandomMovie] = useState(null); // null로 초기화
+  const [trend, setTrend] = useState([]);
+  const [randomMovie, setRandomMovie] = useState(null);
+  const [opacity, setOpacity] = useState(0); // 이미지 투명도 상태 추가
   
   useEffect(() => {
     const fetchData = async () => {
@@ -15,6 +16,7 @@ function Home() {
         setTrend(movies);
         if (movies.length > 0) {
           setRandomMovie(movies[0]);
+          setOpacity(1); // 첫 이미지의 투명도 설정
         }
       } catch (err) {
         console.error('API 호출 실패: ', err);
@@ -22,34 +24,39 @@ function Home() {
     };
     fetchData();
   }, []);
-
+  
   useEffect(() => {
-    if (trend.length > 0) { // trend가 비어 있지 않을 때만 실행
-      const intervalId = setTimeout(() => {
-        setRandomMovie(trend[getRandomMovie(trend.length)]);  
-      }, 8000);
+    if (trend.length > 0) {
+      const intervalId = setInterval(() => {
+        setOpacity(0); // 투명하게 만들고
+        setTimeout(() => {
+          setRandomMovie(trend[getRandomMovie(trend.length)]);  
+          setOpacity(1); // 다음 이미지가 보이도록 투명도 조정
+        }, 1000); // 1초 후 이미지 전환
+      }, 7000); // 8초마다 전환
 
-      return () => clearTimeout(intervalId); // 컴포넌트가 unmount될 때 정리
+      return () => clearInterval(intervalId);
     }
-  }, [randomMovie]);
+  }, [randomMovie, trend]);
 
   const getRandomMovie = (len) => Math.floor(Math.random() * len);
 
   return (
     <div className="home">
-      {randomMovie && randomMovie.poster_path && ( // randomMovie가 null이 아니고 poster_path가 있을 때만 표시
+      {randomMovie && randomMovie.poster_path && (
         <img 
           src={EMAGE_BASE_URL_1280 + randomMovie.backdrop_path}
           className="main-poster"
+          style={{ opacity }} // opacity 상태 적용
         />
-      )}
-      <h4>안녕</h4>
+      )
+      }
+      <div className="movie">
+        <p>{randomMovie.name}</p>
+        <p>{randomMovie.overview}</p>
+      </div>
       <br/>
       <br/>
-{/* 
-      {trend.length > 0 && trend.map((movie) => ( // trend가 비어 있지 않을 때만 map 실행
-        <MovieItem key={movie.id} movie={movie} />
-      ))} */}
     </div>
   );
 }
