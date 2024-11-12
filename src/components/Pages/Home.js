@@ -26,8 +26,8 @@ function Home() {
   useEffect(() => {
     if (trend.length > 0) { // trend가 비어 있지 않을 때만 실행
       const intervalId = setTimeout(() => {
-        setRandomMovie(trend[getRandomMovie(trend.length)]);
-      }, 5000);
+        setRandomMovie(trend[getRandomMovie(trend.length)]);  
+      }, 8000);
 
       return () => clearTimeout(intervalId); // 컴포넌트가 unmount될 때 정리
     }
