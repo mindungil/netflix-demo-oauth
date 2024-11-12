@@ -1,11 +1,23 @@
 // components/Home.js
 import React from 'react';
 import './Home.css';
+import { EMAGE_BASE_URL_1280 } from '../config';
 
 function Home() {
+
+  
   return (
     <div className="home">
-      <h1>메인 화면</h1>
+      <img 
+        src={EMAGE_BASE_URL_1280 + movie.poster_path}
+        art={movie.title}
+        className='main-poster'
+        />
+      {movies.map((movie) => {
+        <MovieItem movie={movie}/>
+      })}
+
+
     </div>
   );
 }

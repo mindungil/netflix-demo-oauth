@@ -38,6 +38,10 @@ export const fetchGenres = async () => {
   }
 };
 
+export const fetchTrends = async () => {
+  
+}
+
 export const searchMovies = async (name, page = 1) => {
   try {
     const res = await axios.get(`${API_URL}/search/movie`, {
