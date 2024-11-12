@@ -9,10 +9,16 @@
 }
 
 .main-poster {
-  width: 180%; /* 페이지 전체 너비에 맞춤 */
-  height: 60vh; /* 배너 크기에 맞춤 */
+  width: 180%;
+  height: 60vh;
   object-fit: cover;
   animation: fadeInOut 8s ease-in-out infinite;
+
+  /* 가장자리 투명 효과 */
+  -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
 }
 
 /* fadeInOut 애니메이션 정의 */

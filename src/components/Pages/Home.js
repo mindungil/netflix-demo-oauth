@@ -43,7 +43,9 @@ function Home() {
           className="main-poster"
         />
       )}
-      <br />
+      <h4>안녕</h4>
+      <br/>
+      <br/>
 {/* 
       {trend.length > 0 && trend.map((movie) => ( // trend가 비어 있지 않을 때만 map 실행
         <MovieItem key={movie.id} movie={movie} />
