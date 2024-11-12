@@ -26,14 +26,14 @@ function Home() {
   useEffect(() => {
     if (trend.length > 0) { // trend가 비어 있지 않을 때만 실행
       const intervalId = setTimeout(() => {
-        setRandomMovie(trend[getRandomMovie]);
+        setRandomMovie(trend[getRandomMovie(trend.length)]);
       }, 5000);
 
       return () => clearTimeout(intervalId); // 컴포넌트가 unmount될 때 정리
     }
   }, [randomMovie]);
 
-  const getRandomMovie = () => Math.floor(Math.random() * 20);
+  const getRandomMovie = (len) => Math.floor(Math.random() * len);
 
   return (
     <div className="home">
