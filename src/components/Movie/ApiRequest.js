@@ -39,7 +39,22 @@ export const fetchGenres = async () => {
 };
 
 export const fetchTrends = async () => {
-  
+  try {
+    const res = await axios.get(`${API_URL}/trending/movie/week`, {
+      params: {
+        language: 'ko-KR',
+      },
+      headers: {
+        accept: 'application/json',
+        Authorization: API_ACCESS,
+      }
+    });
+
+    return res.data.results;
+  } catch(err) {
+    console.error('API 요청 오류: ', err);
+    throw err;
+  }
 }
 
 export const searchMovies = async (name, page = 1) => {
