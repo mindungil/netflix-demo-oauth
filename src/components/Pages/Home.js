@@ -43,7 +43,7 @@ function Home() {
 
   return (
     <div className="home">
-      <h3 className="text-pop-up-top">GILPLIX에 오신것을 환영합니다</h3>
+      <h3 className="tracking-out-expand-fwd">GILPLIX에 오신것을 환영합니다</h3>
       {randomMovie && randomMovie.poster_path && (
         <img 
           src={EMAGE_BASE_URL_1280 + randomMovie.backdrop_path}
