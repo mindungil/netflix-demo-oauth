@@ -7,10 +7,10 @@ function Header() {
     useEffect(() => {
         setIsLoggedIn(JSON.parse(localStorage.getItem('isLoggedIn')));
     }, []);
-    console.log(isLoggedIn + " header");
+    console.log(isLoggedIn + " is header");
     return (
         <>
-            {isLoggedIn ? <Nav />:null}
+            {isLoggedIn ? <Nav /> : null}
         </>
     );
 }
