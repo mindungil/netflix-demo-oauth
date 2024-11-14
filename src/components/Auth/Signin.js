@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Auth.css';
+import { errorMessage, successMessage } from '../CustomToast';
 
 function Signin({ toggleAuth }) {
   const [email, setEmail] = useState('');
@@ -27,9 +28,11 @@ function Signin({ toggleAuth }) {
   
     if (!userData || email !== userData.email || password !== userData.password) {
       console.log('로그인 실패 조건 실행');
+      errorMessage('로그인에 실패하였습니다.');
     } else {
       console.log('로그인 성공 조건 실행');
       localStorage.setItem('isLoggedIn', 'true');
+      successMessage("로그인에 성공하였습니다.");
       navigate('/');
     }
   };

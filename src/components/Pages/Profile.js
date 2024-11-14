@@ -1,6 +1,7 @@
 // components/Profile.js
 import React, { useEffect, useState } from 'react';
 import './Profile.css';
+import { successMessage } from '../CustomToast';
 
 function Profile() {
   const [id, setId] = useState(null);
@@ -53,6 +54,7 @@ function Profile() {
   const handleLogout = () => {
     localStorage.setItem('isLoggedIn', JSON.stringify(false));
     window.location.reload(); // 예시: 페이지 리로드
+    successMessage("로그아웃 되었습니다.");
   };
 
   useEffect(() => {
