@@ -25,7 +25,7 @@ function AppRouter() {
         <Route path="/search" element={<ProtectedRoute><Search /></ProtectedRoute>} />
         <Route path="/wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
         <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-        <Route path="/Signin" element={<Signin />}></Route>""
+        <Route path="/Signin" element={<Signin />}></Route>
       </Routes>
     </div>
   );
