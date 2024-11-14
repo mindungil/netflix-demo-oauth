@@ -1,15 +1,15 @@
 // src/components/Header/Header.js
 import React from "react";
 import Nav from './Nav';
-import HandleAuth from "../Auth/HandleAuth";
 
 function Header() {
-    const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'))
-    console.log(isLoggedIn);
+    // const [isLoggedIn, setIsLoggedIn] = useState();
+    // useEffect(() => {
+    //     setIsLoggedIn(JSON.parse(localStorage.getItem('isLoggedIn')));
+    // }, []);
+    // console.log(isLoggedIn + " is header");
     return (
-        <>
-            {isLoggedIn ? <Nav /> : <HandleAuth />}
-        </>
+        <Nav/>
     );
 }
 

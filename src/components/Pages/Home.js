@@ -10,6 +10,8 @@ function Home() {
   const [opacity, setOpacity] = useState(0);
 
   useEffect(() => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+
     const fetchData = async () => {
       try {
         const movies = await fetchTrends();
