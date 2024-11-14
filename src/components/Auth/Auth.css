@@ -12,7 +12,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #121212; /* Dark background */
+    background-color: transparent; /* Dark background */
     color: white;
   }
   

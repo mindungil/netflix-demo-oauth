@@ -1,7 +1,6 @@
 // components/Profile.js
 import React, { useEffect, useState } from 'react';
 import './Profile.css';
-import { Navigate } from 'react-router-dom';
 
 function Profile() {
   const [id, setId] = useState(null);
@@ -69,24 +68,33 @@ function Profile() {
       <div className="password-change">
         <h3>비밀번호 변경</h3>
 
-        <label>현재 비밀번호:</label>
-        <input
-          type="password"
-          value={currentPassword}
-          onChange={(e) => setCurrentPassword(e.target.value)}
-        />
-        <label>새 비밀번호:</label>
-        <input
-          type="password"
-          value={newPassword}
-          onChange={(e) => setNewPassword(e.target.value)}
-        />
-        <label>새 비밀번호 확인:</label>
-        <input
-          type="password"
-          value={newPasswordConfirm}
-          onChange={(e) => setNewPasswordConfirm(e.target.value)}
-        />
+        <div className='password'>
+          <label>현재 비밀번호:</label>
+          <input
+            type="password"
+            value={currentPassword}
+            onChange={(e) => setCurrentPassword(e.target.value)}
+          />
+        </div>
+        
+        <div className='password'>
+          <label>새 비밀번호:</label>
+          <input
+            type="password"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+          />
+        </div>
+        
+        <div className='password'>
+          <label>새 비밀번호 확인:</label>
+          <input
+            type="password"
+            value={newPasswordConfirm}
+            onChange={(e) => setNewPasswordConfirm(e.target.value)}
+          />
+        </div>
+
         <button onClick={handlePasswordChange}>변경하기</button>
       </div>
       
