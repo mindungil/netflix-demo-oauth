@@ -7,7 +7,6 @@ import Search from './components/Pages/Search';
 import Wishlist from './components/Pages/Wishlist';
 import Profile from './components/Pages/Profile';
 import Signin from './components/Auth/Signin';
-import TableView from './components/Movie/TableView';
 
 // ProtectedRoute 컴포넌트 정의
 function ProtectedRoute({ children }) {
