@@ -10,7 +10,7 @@ function Header() {
     console.log(isLoggedIn + " is header");
     return (
         <>
-            {isLoggedIn ? <Nav /> : null}
+            {isLoggedIn ? <Nav /> : <Nav/>}
         </>
     );
 }
