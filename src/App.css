@@ -1,8 +1,18 @@
 body {
   margin: 0;
-  padding-top: 130px; /* 전체 페이지에 상단 여백 추가 */
+  padding-top: 10vh; /* 전체 페이지에 상단 여백 추가 */
 }
 
 *{
   background: black;
+}
+
+p {
+  color: white;
+  margin: auto;
+}
+ 
+h2 {
+  color: #1e90ff; /* Blue color for the header */
+  margin-bottom: 20px;
 }
