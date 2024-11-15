@@ -1,3 +1,5 @@
+import { successMessage } from "./CustomToast";
+
 export const API_URL = 'https://api.themoviedb.org/3';
 export const API_KEY = '611d06bda7fd5b6ba646060bd99fb648';
 export const EMAGE_BASE_URL_1280 = 'https://image.tmdb.org/t/p/w1280/'; //w1280 크기
@@ -31,11 +33,11 @@ export function checkLocalStorage(data) {
         // 데이터가 이미 있으면 해당 항목을 제외한 새 배열 생성
         const newData = localData.filter(item => item.id !== data.id);
         localStorage.setItem('wishlist', JSON.stringify(newData));
-        console.log("isCalled 1");
+        successMessage('위시리스트에서 삭제되었습니다.');
     } else {
         // 데이터가 없으면 새로운 항목 추가 후 로컬스토리지에 저장
         localData.push(data);
         localStorage.setItem('wishlist', JSON.stringify(localData));
-        console.log("isCalled 2");
+        successMessage('위시리스트에 추가되었습니다.');
     }
 }   
