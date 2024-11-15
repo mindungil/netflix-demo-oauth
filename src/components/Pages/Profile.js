@@ -66,6 +66,8 @@ function Profile() {
     <div className="profile">
       <h2>내 정보</h2>
       <p>내 아이디:    {id}</p>
+
+      <button className="logout-button" onClick={handleLogout}>로그아웃</button>  
       
       <div className="password-change">
         <h3>비밀번호 변경</h3>
@@ -99,8 +101,7 @@ function Profile() {
 
         <button onClick={handlePasswordChange}>변경하기</button>
       </div>
-      
-      <button className="logout-button" onClick={handleLogout}>로그아웃</button>
+
     </div>
   );
 }
