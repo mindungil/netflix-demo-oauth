@@ -6,15 +6,18 @@ body {
     padding: 0;
   }
   
-  div {
+  .signin, .register {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
+    width: 80vh;
     background-color: transparent; /* Dark background */
     color: white;
+    margin: auto;
   }
+
   
   h2 {
     color: #1e90ff; /* Blue color for the header */
@@ -23,7 +26,7 @@ body {
   
   input[type="email"],
   input[type="password"] {
-    width: 80%;
+    width: 40vh;
     padding: 10px;
     margin: 10px 0;
     border: none;
@@ -49,7 +52,7 @@ body {
   }
   
   button {
-    width: 80%;
+    width: 20vh;
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -63,13 +66,3 @@ body {
   button:hover {
     background-color: #007acc; /* Darker blue on hover */
   }
-  
-  .Toastify__toast {
-    background-color: #333333; /* Dark background for toast messages */
-    color: #ffffff;
-  }
-  
-  .Toastify__toast--error {
-    background-color: #ff4c4c; /* Red for error messages */
-  }
-  

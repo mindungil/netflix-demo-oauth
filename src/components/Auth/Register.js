@@ -27,7 +27,7 @@ function Register({ toggleAuth }) {
   };
 
   return (
-    <div className="register-container">
+    <div className="register">
       <h2>회원가입</h2>
       <input
         type="email"

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Auth.css';
 import { errorMessage, successMessage } from '../CustomToast';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Signin({ toggleAuth }) {
   const [email, setEmail] = useState('');
@@ -38,7 +39,7 @@ function Signin({ toggleAuth }) {
   };
 
   return (
-    <div className="signin-container">
+    <div className="signin">
       <h2>로그인</h2>
       <input
         type="email"
