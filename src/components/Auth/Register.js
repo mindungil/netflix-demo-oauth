@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import './Auth.css';
 
-function Register({ toggleAuth }) {
+function Register({ changeAuth ,state }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -23,7 +23,11 @@ function Register({ toggleAuth }) {
     // 회원가입 성공 처리
     localStorage.setItem('registeredUser', JSON.stringify({ email, password }));
     toast.success('회원가입이 성공적으로 완료되었습니다!');
-    toggleAuth();
+    changeAuth(false);
+  };
+
+  const handleAuth = () => {
+    changeAuth(!state);
   };
 
   return (
@@ -56,7 +60,7 @@ function Register({ toggleAuth }) {
         약관에 동의합니다
       </label>
       <button onClick={handleRegister}>회원가입</button>
-      <button onClick={toggleAuth}>로그인</button>
+      <button onClick={handleAuth}>로그인</button>
     </div>
   );
 }

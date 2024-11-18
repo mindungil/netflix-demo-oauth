@@ -5,7 +5,7 @@ import './Auth.css';
 import { errorMessage, successMessage } from '../CustomToast';
 import 'react-toastify/dist/ReactToastify.css';
 
-function Signin({ toggleAuth }) {
+function Signin({ changeAuth, state }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -38,6 +38,10 @@ function Signin({ toggleAuth }) {
     }
   };
 
+  const handleAuth = () => {
+    changeAuth(!state);
+  };
+
   return (
     <div className="signin">
       <h2>로그인</h2>
@@ -57,7 +61,7 @@ function Signin({ toggleAuth }) {
         <input type="checkbox" /> Remember me
       </label>
       <button onClick={handleLogin}>로그인</button>
-      <button onClick={toggleAuth}>회원가입</button>
+      <button onClick={handleAuth}>회원가입</button>
     </div>
   );
 }
