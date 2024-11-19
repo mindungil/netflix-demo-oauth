@@ -21,6 +21,7 @@ function AppRouter() {
     <div>
       <Routes>
         <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+        <Route path="/netflix-demo" element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path="/popular" element={<ProtectedRoute><Popular /></ProtectedRoute>}/>
         <Route path="/search" element={<ProtectedRoute><Search /></ProtectedRoute>} />
         <Route path="/wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
