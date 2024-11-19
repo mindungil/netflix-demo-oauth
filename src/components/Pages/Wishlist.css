@@ -5,7 +5,7 @@
 
 .wish-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 영화 아이템을 4열로 표시 */
+  grid-template-columns: repeat(auto-fill, minmax(35vh, 1fr)); /* 영화 아이템을 4열로 표시 */
   gap: 20px;
   padding-top: 20px;
 }
