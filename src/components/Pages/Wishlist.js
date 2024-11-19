@@ -46,8 +46,8 @@ function Wishlist() {
         ) : (
           <p>No movies available</p>
         )}
-
-        <div className="pagination">
+      </div>
+      <div className="pagination">
           <button onClick={goToPreviousPage} disabled={currentPage === 1}>
             이전
           </button>
@@ -55,8 +55,7 @@ function Wishlist() {
           <button onClick={goToNextPage} disabled={currentPage === totalPages}>
             다음
           </button>
-        </div>
-      </div>
+        </div> 
     </div>
   );
 }
