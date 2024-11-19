@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.css';
 import { fetchId } from '../config';
@@ -7,7 +7,8 @@ import { successMessage } from '../CustomToast';
 function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [id, setId] = useState();
-
+  const navLinkRef = useRef(null); // >>>>>> DOM 접근 구현
+  const navLinkRef2 = useRef(null);
   useEffect(() => {
     const userId = fetchId();
     setId(userId);
@@ -15,7 +16,7 @@ function Nav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50); // 스크롤 50px 이상 시 효과 >> 스크롤 다운 시 투명해지는 효과 구현
+      setIsScrolled(window.scrollY > 50); // 스크롤 50px 이상 시 효과
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -26,8 +27,27 @@ function Nav() {
 
   const handleLogout = () => {
     localStorage.setItem('logged', JSON.stringify(false));
-    window.location.reload(); // 예시: 페이지 리로드
+    window.location.reload(); // 페이지 리로드
     successMessage("로그아웃 되었습니다.");
+  };
+
+  const changeRandomColor = () => {
+    const randomColor = generateRandomColor();
+    if (navLinkRef.current) {
+      navLinkRef.current.style.color = randomColor;
+    }
+    if (navLinkRef2.current) {
+      navLinkRef2.current.style.color = randomColor;
+    }
+  };
+
+  const generateRandomColor = () => {
+    // RGB 색상에서 검정색 계열(0~50)의 값은 제외
+    const getRandomValue = () => Math.floor(Math.random() * (255 - 50) + 50);
+    const r = getRandomValue();
+    const g = getRandomValue();
+    const b = getRandomValue();
+    return `rgb(${r}, ${g}, ${b})`;
   };
 
   return (
@@ -39,19 +59,27 @@ function Nav() {
         <Link to="/search" className="nav-link">찾아보기</Link>
         <Link to="/wishlist" className="nav-link">위시리스트</Link>
         <Link to="/profile" className="nav-link">내 정보</Link>
-        <Link to="/profile" className="nav-link2">{id}</Link>
+        <Link
+          to="/profile"
+          className="nav-link2"
+          ref={navLinkRef}
+          onClick={changeRandomColor}
+        >
+          {id}
+        </Link>
         <a
           href="#"
           onClick={(event) => {
             event.preventDefault(); // 기본 링크 이동 동작 방지
             handleLogout();
           }}
+          ref={navLinkRef2}
           className='nav-link2'
         >
           로그아웃
         </a>
       </div>
-    </nav> 
+    </nav>
   );
 }
 
