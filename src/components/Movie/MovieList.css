@@ -30,12 +30,12 @@
 .table-view {
   background-color: black;
   display: grid; /* display: grid를 명시적으로 선언 */
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(35vh, 1fr));
 }
 
 .scroll-view {
     display: grid; /* display: grid를 명시적으로 선언 */
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(35vh, 1fr));
 }
 
 .pagination {
