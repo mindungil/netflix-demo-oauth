@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import MovieItem from '../Movie/MovieItem';
+import { MovieItem2 } from '../Movie/MovieItem';
 import './Wishlist.css';
 
 function Wishlist() {
@@ -46,7 +46,7 @@ function Wishlist() {
         {movies.length ? (
           movies.map((movie, index) => (
             <div onClick={() => setMovieUpdate()}>
-              <MovieItem key={index} movie={movie} />
+              <MovieItem2 key={index} movie={movie} />
             </div>
           ))
         ) : (
