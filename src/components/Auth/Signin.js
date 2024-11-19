@@ -2,8 +2,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Auth.css';
+import { errorMessage, successMessage } from '../CustomToast';
+import 'react-toastify/dist/ReactToastify.css';
 
-function Signin({ toggleAuth }) {
+function Signin({ changeAuth, state }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -27,15 +29,21 @@ function Signin({ toggleAuth }) {
   
     if (!userData || email !== userData.email || password !== userData.password) {
       console.log('로그인 실패 조건 실행');
+      errorMessage('로그인에 실패하였습니다.');
     } else {
       console.log('로그인 성공 조건 실행');
       localStorage.setItem('isLoggedIn', 'true');
+      successMessage("로그인에 성공하였습니다.");
       navigate('/');
     }
   };
 
+  const handleAuth = () => {
+    changeAuth(!state);
+  };
+
   return (
-    <div className="signin-container">
+    <div className="signin">
       <h2>로그인</h2>
       <input
         type="email"
@@ -53,7 +61,7 @@ function Signin({ toggleAuth }) {
         <input type="checkbox" /> Remember me
       </label>
       <button onClick={handleLogin}>로그인</button>
-      <button onClick={toggleAuth}>회원가입</button>
+      <button onClick={handleAuth}>회원가입</button>
     </div>
   );
 }

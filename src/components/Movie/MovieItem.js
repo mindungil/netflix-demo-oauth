@@ -12,9 +12,9 @@ const MovieItem = ({ movie }) => {
         className="zoom-in"
         onClick={() => checkLocalStorage(movie)}
       />
-      <h3>{movie.title}</h3>
-      <p style={{margin: 0}}>평점 : {movie.vote_average.toFixed(1)}</p>
-      <p>{movie.release_date}</p>
+      {/* <h3>{movie.title}</h3> */}
+      {/* <p style={{margin: 0}}>평점 : {movie.vote_average.toFixed(1)}</p>
+      <p>{movie.release_date}</p> */}
     </div>
   );
 };

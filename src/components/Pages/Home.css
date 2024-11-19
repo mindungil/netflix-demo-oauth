@@ -14,7 +14,7 @@
 }
 
 .main-poster {
-  margin-top: 100px;
+  margin-top: 0px;
   background-color: black;
   width: 200vh;
   height: 70vh;
@@ -41,6 +41,8 @@
 
 /* 제목 스타일 */
 .poster-inform p:first-child {
+  text-decoration: underline;
+  text-decoration-color: rgb(148, 157, 148);
   margin-top: 140px; 
   font-size: 2rem;
   font-weight: bold;
@@ -59,6 +61,7 @@
 
 .tracking-out-expand-fwd {
   font-size: 35px;
+  color: white;
   
   position:absolute;
   top: 30px;

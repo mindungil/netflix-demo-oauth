@@ -111,7 +111,6 @@ function Search() {
 
   return (
     <div className="search">
-      <h2>찾아보기</h2>
       <div className="search-controls">
         <input
           className="search-input"
@@ -137,9 +136,12 @@ function Search() {
           <option value="release_date.desc">최신 개봉순</option>
           <option value="vote_average.desc">평점순</option>
         </select>
-        <button onClick={handleSearch}>Search</button>
-        <button className="small-button" onClick={handleResetFilters}>Reset</button>
-      </div>
+        </div>
+        
+        <div className='search-buttons'>
+          <button onClick={handleSearch}>Search</button>
+          <button className="small-button" onClick={handleResetFilters}>Reset</button>
+        </div>
 
       {initialLoading && <div className="loading-animation">데이터가 많습니다. 30초 정도 걸릴 수 있습니다.</div>} {/* Initial loading message */}
       
@@ -152,9 +154,8 @@ function Search() {
         className="top-button"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
-        ↑
       </button>
-      {loading && <div className="loading">Loading...</div>} {/* Loading animation at bottom */}
+      {loading && <div className="loading"></div>} {/* Loading animation at bottom */}
     </div>
   );
 }

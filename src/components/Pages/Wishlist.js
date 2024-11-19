@@ -37,7 +37,6 @@ function Wishlist() {
 
   return (
     <div className="wishlist-container">
-      <h2 className="wishlist-header">위시 리스트</h2>
       <div className="movie-list table-view">
         {movies.length ? (
           movies.map((movie, index) => (
@@ -46,8 +45,8 @@ function Wishlist() {
         ) : (
           <p>No movies available</p>
         )}
-
-        <div className="pagination">
+      </div>
+      <div className="pagination">
           <button onClick={goToPreviousPage} disabled={currentPage === 1}>
             이전
           </button>
@@ -55,8 +54,7 @@ function Wishlist() {
           <button onClick={goToNextPage} disabled={currentPage === totalPages}>
             다음
           </button>
-        </div>
-      </div>
+        </div> 
     </div>
   );
 }
