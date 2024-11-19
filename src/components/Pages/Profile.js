@@ -1,7 +1,7 @@
 // components/Profile.js
 import React, { useEffect, useState } from 'react';
 import './Profile.css';
-import { successMessage } from '../CustomToast';
+import { errorMessage, successMessage } from '../CustomToast';
 
 function Profile() {
   const [id, setId] = useState(null);
@@ -38,12 +38,12 @@ function Profile() {
     const passwordData = fetchLocalStorage().password;
 
     if(passwordData !== currentPassword) {
-      alert("현재 비밀번호가 일치하지 않습니다.");
+      errorMessage("현재 비밀번호가 일치하지 않습니다.");
       return;
     }
     // 새 비밀번호 확인
     if (newPassword !== newPasswordConfirm) {
-      alert("새 비밀번호와 확인 비밀번호가 일치하지 않습니다.");
+      errorMessage("새 비밀번호와 확인 비밀번호가 일치하지 않습니다.");
       return;
     }
     // 백엔드와 연결하여 비밀번호 변경 요청 보내기

@@ -1,8 +1,8 @@
 // src/components/Auth/Register.js
 import React, { useState } from 'react';
-import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import './Auth.css';
+import { errorMessage, successMessage } from '../CustomToast';
 
 function Register({ changeAuth ,state }) {
   const [email, setEmail] = useState('');
@@ -13,16 +13,16 @@ function Register({ changeAuth ,state }) {
 
   const handleRegister = () => {
     if (password !== confirmPassword) {
-      toast.error('비밀번호가 일치하지 않습니다.');
+      errorMessage('비밀번호가 일치하지 않습니다.');
       return;
     }
     if (!termsAccepted) {
-      toast.error('약관에 동의해야 합니다.');
+      errorMessage('약관에 동의해야 합니다.');
       return;
     }
     // 회원가입 성공 처리
     localStorage.setItem('users', JSON.stringify({ email, password }));
-    toast.success('회원가입이 성공적으로 완료되었습니다!');
+    successMessage('회원가입이 성공적으로 완료되었습니다!');
 
     changeAuth(true);
   };
