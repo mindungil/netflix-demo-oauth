@@ -7,7 +7,7 @@ function Nav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50); // 스크롤 50px 이상 시 효과
+      setIsScrolled(window.scrollY > 50); // 스크롤 50px 이상 시 효과 >> 스크롤 다운 시 투명해지는 효과 구현
     };
 
     window.addEventListener('scroll', handleScroll);
