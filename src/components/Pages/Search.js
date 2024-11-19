@@ -155,7 +155,6 @@ function Search() {
         className="top-button"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
-        ↑
       </button>
       {loading && <div className="loading">Loading...</div>} {/* Loading animation at bottom */}
     </div>

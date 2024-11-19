@@ -41,10 +41,12 @@ const TableView = () => {
   if (error) return <div>{error}</div>;
 
   return (
-    <div className="movie-list table-view">
-      {movies.map((movie) => (
-        <MovieItem key={movie.id} movie={movie} />
-      ))}
+    <>
+      <div className="movie-list table-view">
+        {movies.map((movie) => (
+          <MovieItem key={movie.id} movie={movie} />
+        ))}
+      </div>
       <div className="pagination">
         <button onClick={() => goToPage(page - 1)} disabled={page === 1}>
           이전
@@ -54,7 +56,7 @@ const TableView = () => {
           다음
         </button>
       </div>
-    </div>
+    </>
   );
 };
 
