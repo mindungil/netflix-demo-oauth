@@ -37,7 +37,6 @@ function Wishlist() {
 
   return (
     <div className="wishlist-container">
-      <h2 className="wishlist-header">위시 리스트</h2>
       <div className="movie-list table-view">
         {movies.length ? (
           movies.map((movie, index) => (

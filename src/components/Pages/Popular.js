@@ -8,7 +8,6 @@ function Popular() {
 
   return (
     <div className="popular">
-      <h2>대세 콘텐츠</h2>
       <button onClick={() => setView(true)}>Table View</button>
       <button onClick={() => setView(false)}>Scroll View</button>
       {view ? <TableView /> : <ScrollView />}

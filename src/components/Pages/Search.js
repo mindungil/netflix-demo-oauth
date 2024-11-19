@@ -111,7 +111,6 @@ function Search() {
 
   return (
     <div className="search">
-      <h2>찾아보기</h2>
       <div className="search-controls">
         <input
           className="search-input"
@@ -156,7 +155,7 @@ function Search() {
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
       </button>
-      {loading && <div className="loading">Loading...</div>} {/* Loading animation at bottom */}
+      {loading && <div className="loading"></div>} {/* Loading animation at bottom */}
     </div>
   );
 }

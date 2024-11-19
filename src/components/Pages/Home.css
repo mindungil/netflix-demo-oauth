@@ -41,6 +41,8 @@
 
 /* 제목 스타일 */
 .poster-inform p:first-child {
+  text-decoration: underline;
+  text-decoration-color: rgb(148, 157, 148);
   margin-top: 140px; 
   font-size: 2rem;
   font-weight: bold;
