@@ -72,13 +72,13 @@
   color: white;
 }
 
-/* 페이지 상단으로 이동하는 버튼 */
+/* 페이지 상단으로 이동하는 버튼
 .top-button {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #3498db;
-  color: #fff;
+  background-color: white;
+  color: black;
   border: none;
   border-radius: 50%;
   padding: 10px;
@@ -89,8 +89,8 @@
 }
 
 .top-button:hover {
-  background-color: #2980b9;
-}
+  background-color: #b7942e;
+} */
 
 .wishlist-container {
   padding-top: 20px;
