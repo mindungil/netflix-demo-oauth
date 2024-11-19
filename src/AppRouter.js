@@ -11,7 +11,7 @@ import { HandleAuth } from './components/Auth/HandleAuth';
 
 // ProtectedRoute 컴포넌트 정의
 function ProtectedRoute({ children }) {
-  const isAuthenticated = JSON.parse(localStorage.getItem('isLoggedIn'));
+  const isAuthenticated = JSON.parse(localStorage.getItem('logged'));
   return isAuthenticated ? children : <Navigate to="/signin" />;
 }
 

@@ -21,7 +21,7 @@ function Register({ changeAuth ,state }) {
       return;
     }
     // 회원가입 성공 처리
-    localStorage.setItem('registeredUser', JSON.stringify({ email, password }));
+    localStorage.setItem('users', JSON.stringify({ email, password }));
     toast.success('회원가입이 성공적으로 완료되었습니다!');
 
     changeAuth(true);

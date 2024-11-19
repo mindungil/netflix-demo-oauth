@@ -11,7 +11,7 @@ function Profile() {
 
   const fetchLocalStorage = () => {
     try {
-      const localData = JSON.parse(localStorage.getItem('registeredUser'));
+      const localData = JSON.parse(localStorage.getItem('users'));
       return localData;
     } catch (err) {
       console.log("로컬 스토리지 접근 오류: ", err);
@@ -24,7 +24,7 @@ function Profile() {
         password: newPassword
       };
 
-      localStorage.setItem('registeredUser', JSON.stringify(registeredUser));
+      localStorage.setItem('users', JSON.stringify(registeredUser));
     } catch(err) {
       console.error("비밀번호 저장 실패 : ", err);
       throw err;  
@@ -52,7 +52,7 @@ function Profile() {
   };
 
   const handleLogout = () => {
-    localStorage.setItem('isLoggedIn', JSON.stringify(false));
+    localStorage.setItem('logged', JSON.stringify(false));
     window.location.reload(); // 예시: 페이지 리로드
     successMessage("로그아웃 되었습니다.");
   };
@@ -70,36 +70,42 @@ function Profile() {
       <button className="logout-button" onClick={handleLogout}>로그아웃</button>  
       
       <div className="password-change">
-        <h3>비밀번호 변경</h3>
+        <h3 style={{background: 'transparent'}}>비밀번호 변경</h3>
 
-        <div className='password'>
-          <label>현재 비밀번호:</label>
+        <div className="password">
+          <label htmlFor="currentPassword">현재 비밀번호:</label>
           <input
+            id="currentPassword"
             type="password"
             value={currentPassword}
+            placeholder="현재 비밀번호를 입력하세요."
             onChange={(e) => setCurrentPassword(e.target.value)}
           />
         </div>
-        
-        <div className='password'>
-          <label>새 비밀번호:</label>
+
+        <div className="password">
+          <label htmlFor="newPassword">새 비밀번호:</label>
           <input
+            id="newPassword"
             type="password"
             value={newPassword}
+            placeholder="새 비밀번호를 입력하세요."
             onChange={(e) => setNewPassword(e.target.value)}
           />
         </div>
-        
-        <div className='password'>
-          <label>새 비밀번호 확인:</label>
+
+        <div className="password">
+          <label htmlFor="newPasswordConfirm">새 비밀번호 확인:</label>
           <input
+            id="newPasswordConfirm"
             type="password"
             value={newPasswordConfirm}
+            placeholder=""
             onChange={(e) => setNewPasswordConfirm(e.target.value)}
           />
         </div>
 
-        <button onClick={handlePasswordChange}>변경하기</button>
+        <button onClick={handlePasswordChange}>비밀번호 변경</button>
       </div>
 
     </div>

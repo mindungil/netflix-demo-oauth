@@ -12,7 +12,7 @@ function Signin({ changeAuth, state }) {
 
   const handleLogin = async () => {
     // localStorage에서 등록된 사용자 정보를 가져옴
-    const userKey = localStorage.getItem('registeredUser');
+    const userKey = localStorage.getItem('users');
     let userData = null;
   
     if (userKey) {
@@ -32,7 +32,7 @@ function Signin({ changeAuth, state }) {
       errorMessage('로그인에 실패하였습니다.');
     } else {
       console.log('로그인 성공 조건 실행');
-      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('logged', 'true');
       successMessage("로그인에 성공하였습니다.");
       navigate('/');
     }
