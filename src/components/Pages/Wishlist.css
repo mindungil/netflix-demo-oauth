@@ -1,17 +1,16 @@
 .wishlist {
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .wish-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(35vh, 1fr)); /* 영화 아이템을 4열로 표시 */
-  gap: 20px;
-  padding-top: 20px;
+  gap: 1vh;
 }
 
 .wishlist-item {
-  margin: 0.5rem 0;
+  margin: 1rem;
   background-color: #fff; /* 영화 아이템 배경색 */
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
   border-radius: 8px; /* 모서리 둥글게 */

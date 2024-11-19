@@ -6,6 +6,7 @@ function Wishlist() {
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [update, setUpdate] = useState(false);
 
   useEffect(() => {
     const moviesString = localStorage.getItem('wishlist');
@@ -16,7 +17,7 @@ function Wishlist() {
     const startIdx = (currentPage - 1) * moviesPerPage;
     const endIdx = startIdx + moviesPerPage;
     setMovies(storedMovies.slice(startIdx, endIdx));
-  }, [currentPage]);
+  }, [currentPage, update]);
 
   // currentPage 변경 시, 상단으로 스크롤 이동
   useEffect(() => {
@@ -35,12 +36,18 @@ function Wishlist() {
     }
   };
 
+  const setMovieUpdate = () => {
+    setUpdate(!update);
+  }
+
   return (
     <div className="wishlist-container">
       <div className="movie-list table-view">
         {movies.length ? (
           movies.map((movie, index) => (
-            <MovieItem key={index} movie={movie} />
+            <div onClick={() => setMovieUpdate()}>
+              <MovieItem key={index} movie={movie} />
+            </div>
           ))
         ) : (
           <p>No movies available</p>
