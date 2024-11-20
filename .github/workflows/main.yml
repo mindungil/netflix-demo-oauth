@@ -2,7 +2,7 @@ name: Deploy React App
 on: 
   push:
     branches:
-      - build
+      - develop
 
 jobs:
   build:
@@ -40,7 +40,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
-          publish_branch: gh-pages
+          publish_branch: gh-pages # gh-pages에 빌드 파일이 올라가도록 직접 설정
 
       # 6. 이메일 알림
       - name: Send Email Notification
@@ -53,5 +53,4 @@ jobs:
           to: ${{ secrets.EMAIL_USERNAME }}
           subject: "React Build and Deploy Complete"
           body: |
-            The React build and deployment process has been completed successfully!
-            You can check the deployed site on GitHub Pages.
+            netflix-demo 레파지토리의 Git action이 작동했습니다.

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './Nav.css';
 import { fetchId } from '../config';
 import { successMessage } from '../CustomToast';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -65,6 +66,7 @@ function Nav() {
           ref={navLinkRef}
           onClick={changeRandomColor}
         >
+          <i class="fas fa-user" style={{margin: 3}}></i>
           {id}
         </Link>
         <a
