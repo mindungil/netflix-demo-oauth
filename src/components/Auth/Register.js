@@ -1,7 +1,7 @@
 // src/components/Auth/Register.js
 import React, { useState } from 'react';
 import './Auth.css';
-import { errorMessage, successMessage } from '../CustomToast';
+import { errorMessage, successMessage } from '../../Util/CustomToast';
 
 function Register({ changeAuth ,state }) {
   const [email, setEmail] = useState('');

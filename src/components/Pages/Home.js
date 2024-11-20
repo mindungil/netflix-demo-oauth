@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Home.css';
-import { EMAGE_BASE_URL_1280 } from '../config';
+import { EMAGE_BASE_URL_1280 } from '../../Util/config';
 import { fetchTrends } from '../Movie/ApiRequest';
 
 function Home() {

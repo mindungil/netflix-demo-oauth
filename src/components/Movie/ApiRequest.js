@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_ACCESS, API_URL } from '../config';
+import { API_ACCESS, API_URL } from '../../Util/config';
 
 export const fetchMovies = async (page = 1) => {
   try {

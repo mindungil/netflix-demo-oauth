@@ -1,7 +1,7 @@
 // components/Profile.js
 import React, { useEffect, useState } from 'react';
 import './Profile.css';
-import { errorMessage, successMessage } from '../CustomToast';
+import { errorMessage, successMessage } from '../../Util/CustomToast';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 

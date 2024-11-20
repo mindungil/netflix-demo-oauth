@@ -1,7 +1,5 @@
 import React from 'react';
-import { EMAGE_URL_200 } from '../config';
-// import './MovieList.css';
-import { checkLocalStorage } from '../config';
+import { EMAGE_URL_200, checkLocalStorage } from '../../Util/config';
 
 const MovieItem = ({ movie }) => {
   return (

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Auth.css';
-import { errorMessage, successMessage } from '../CustomToast';
+import { errorMessage, successMessage } from '../../Util/CustomToast';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggle, setTrue } from '../../reducer/boolean';
