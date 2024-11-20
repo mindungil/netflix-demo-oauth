@@ -30,7 +30,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://mindungil.github.io/netflix-demo/",
+  "homepage": "https://mindungil.github.io/netflix-demo",
   "eslintConfig": {
     "extends": [
       "react-app",
