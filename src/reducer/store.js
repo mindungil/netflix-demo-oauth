@@ -1,14 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import rootReducer from ".";
+import rootReducer from "./";
+import booleanReducer from "./boolean"
 
 const store = configureStore({
-    reducer: rootReducer,
+    reducer: {
+        counter: counter,
+        boolean: booleanReducer
+    },
     middleware: [ReduxThunk, logger],
     devTools: true,
-    preloadedState : {
-        counter: {
-            count: 0
-        }
-    },
-
 });
+
+export default store;

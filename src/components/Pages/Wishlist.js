@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { MovieItem2 } from '../Movie/MovieItem';
 import './Wishlist.css';
+import usePage from '../CustomHook/usePage';
 
 function Wishlist() {
   const [movies, setMovies] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = usePage();
   const [totalPages, setTotalPages] = useState(1);
   const [update, setUpdate] = useState(false);
 
@@ -26,13 +27,13 @@ function Wishlist() {
 
   const goToPreviousPage = () => {
     if (currentPage > 1) {
-      setCurrentPage((prev) => prev - 1);
+      setCurrentPage(currentPage - 1);
     }
   };
 
   const goToNextPage = () => {
     if (currentPage < totalPages) {
-      setCurrentPage((prev) => prev + 1);
+      setCurrentPage(currentPage + 1);
     }
   };
 

@@ -8,13 +8,19 @@ import 'react-toastify/dist/ReactToastify.css';
 function Signin({ changeAuth, state }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isChecked, setIsChecked] = useState(false);
   const navigate = useNavigate();
+
+  const handleCheck = () => {
+    setIsChecked(true);
+  }
 
   const handleLogin = async () => {
     // localStorage에서 등록된 사용자 정보를 가져옴
     const userKey = localStorage.getItem('users');
     let userData = null;
-  
+    
+    
     if (userKey) {
       try {
         userData = JSON.parse(userKey);
@@ -58,7 +64,7 @@ function Signin({ changeAuth, state }) {
         onChange={(e) => setPassword(e.target.value)}
       />
       <label>
-        <input type="checkbox" /> Remember me
+        <input type="checkbox" checked={isChecked} onChange={handleCheck}/> Remember me
       </label>
       <button onClick={handleLogin}>로그인</button>
       <button onClick={handleAuth}>회원가입</button>

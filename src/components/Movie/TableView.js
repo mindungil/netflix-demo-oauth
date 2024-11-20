@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import MovieItem from './MovieItem';
 import { fetchMovies } from './ApiRequest';
 import './MovieList.css';
+import usePage from '../CustomHook/usePage';
 
 const TableView = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = usePage();
   const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
