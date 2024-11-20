@@ -8,11 +8,14 @@ import Wishlist from './components/Pages/Wishlist';
 import Profile from './components/Pages/Profile';
 import Signin from './components/Auth/Signin';
 import { HandleAuth } from './components/Auth/HandleAuth';
+import { useSelector } from 'react-redux';
 
 // ProtectedRoute 컴포넌트 정의
 function ProtectedRoute({ children }) {
+  const checked = useSelector((state) => state.boolean.value);
+  console.log(checked + " : is now state");
   const isAuthenticated = JSON.parse(localStorage.getItem('logged'));
-  return isAuthenticated ? children : <Navigate to="/signin" />;
+  return (isAuthenticated || checked) ? children : <Navigate to="/signin" />;
 }
 
 // AppRouter 컴포넌트

@@ -1,13 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import rootReducer from "./";
+import logger from "redux-logger";
 import booleanReducer from "./boolean"
+import counter from "./counter";
 
 const store = configureStore({
     reducer: {
         counter: counter,
         boolean: booleanReducer
     },
-    middleware: [ReduxThunk, logger],
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
     devTools: true,
 });
 

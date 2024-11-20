@@ -1,5 +1,5 @@
 import {combineReducers} from "redux";
-import counter from "./coutner";
+import counter from "./counter";
 import booleanSlice from "./boolean"
 const rootReducer = combineReducers({
     reducer: {
