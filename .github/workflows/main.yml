@@ -1,6 +1,6 @@
 name: React build
 on: 
-  push:                               # main, build 브런치에서만 git action 허용 >> feature은 자주 생성되고 없어짐
+  push:
     branches:
       - build
 
@@ -8,22 +8,22 @@ jobs:
   build:
     runs-on: ubuntu-18.04
     steps:
-      - name: Checkout source code.   # 레포지토리 체크아웃
-        uses: actions/checkout@build
+      - name: Checkout source code.
+        uses: actions/checkout@v3
 
-      - name: Cache node modules      # node modules 캐싱
+      - name: Cache node modules
         uses: actions/cache@v1
         with:
           path: node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-build-${{ hashFiles('package-lock.json') }}
           restore-keys: |
-            ${{ runner.OS }}-build-
-            ${{ runner.OS }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
 
-      - name: Install Dependencies    # 의존 파일 설치
+      - name: Install Dependencies
         run: npm install
 
-      - name: Build                   # React Build
+      - name: Build
         run: npm run build
 
       - name: Deploy to GitHub Pages
@@ -31,17 +31,17 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: build
+          publish_branch: gh-pages
 
-      - name: Send Email Notification # Email 알림 전송
+      - name: Send Email Notification
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: smtp.gmail.com            # 이메일 서버 (예: Gmail)
-          server_port: 587                          # SMTP 포트
-          username: ${{ secrets.EMAIL_USERNAME }}   # 이메일 사용자 이름 (보통 이메일 주소)
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.EMAIL_USERNAME }}
+          from: ${{ secrets.EMAIL_USERNAME }}
+          to: ${{ secrets.EMAIL_USERNAME }}
           subject: "React Build and Deploy Complete"
-          to: ${{ secrets.EMAIL_USERNAME }}                   # 수신자 이메일
-          from: mindungil@github.io               # 발신자 이메일
           body: |
             The React build and deployment process has been completed successfully!
-            You can check the deployed site on GitHub Pages. 
-
+            You can check the deployed site on GitHub Pages.
