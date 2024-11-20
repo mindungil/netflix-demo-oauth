@@ -5,7 +5,7 @@ import './Auth.css';
 import { errorMessage, successMessage } from '../CustomToast';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggle } from '../../reducer/boolean';
+import { toggle, setTrue } from '../../reducer/boolean';
 
 function Signin({ changeAuth, state }) {
   const [email, setEmail] = useState('');
@@ -24,7 +24,7 @@ function Signin({ changeAuth, state }) {
     if (userKey) {
       try {
         userData = JSON.parse(userKey);
-        console.log('User data found:', userData); // 디버깅 로그 추가
+        // console.log('User data found:', userData); // 디버깅 로그 추가
       } catch (error) {
         console.error('JSON 파싱 오류:', error);
         return;
@@ -43,6 +43,7 @@ function Signin({ changeAuth, state }) {
       else localStorage.setItem('logged', 'false');
       successMessage("로그인에 성공하였습니다.");
       dispatch(setTrue()); // localStorage에 false 값만 저장, 전역 state 자체는 true 값이어야 함.
+      localStorage.setItem('searchlist', JSON.stringify([]));
       navigate('/');
     }
   };
