@@ -21,9 +21,8 @@ function ProtectedRoute({ children }) {
 function AppRouter() {
   return (
     <div>
-      <Routes>
+      <Routes basename={process.env.PUBLIC_URL}>
         <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-        <Route path="/netflix-demo" element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path="/popular" element={<ProtectedRoute><Popular /></ProtectedRoute>}/>
         <Route path="/search" element={<ProtectedRoute><Search /></ProtectedRoute>} />
         <Route path="/wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
