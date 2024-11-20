@@ -13,7 +13,7 @@ function App() {
     <>
     <ToastContainer/>
     <Provider store={store}>
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router>
       <Header />
       <AppRouter />
     </Router>
