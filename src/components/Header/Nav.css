@@ -25,12 +25,12 @@
 
 .nav-links {
   display: flex;
-  background-color: transparent;
   margin-right: auto;
-  gap: 14vh;
+  background-color: transparent;
+  gap: 10vh;
 }
 
-.nav-link {
+.nav-link, .nav-link2 {
   background-color: transparent;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: white;
@@ -38,12 +38,19 @@
   transition: color 0.2s ease, transform 0.2s ease; /* 호버 효과 부드럽게 */
 }
 
-.nav-link:hover {
+.nav-link:hover, .nav-link2:hover{
   color: #ff6347; /* 호버 시 색상 변경 */
   transform: scale(1.1); /* 약간 확대 */
 }
 
-.nav-link:active {
+.nav-link:active, .nav-link2:active{
   color: #ffd90037; /* 클릭 시 색상 변경 */
   transform: scale(0.9); /* 살짝 축소 */
+}
+
+.nav-link2 {
+  display: flex;
+  align-items: flex-end;
+  color:rgb(224, 136, 136);
+  margin-left: auto;
 }

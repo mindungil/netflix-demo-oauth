@@ -31,6 +31,15 @@ function Search() {
     setInitialLoading(true); // Start initial loading
     const allResults = [];
 
+    try{
+    const searchList = JSON.parse(localStorage.getItem("searchlist")) || [];
+    searchList.push(query);
+    localStorage.setItem('searchlist', JSON.stringify(searchList));
+    } catch(err) {
+      console.err("검색어 저장 오류: ", err);
+      throw err;
+    }
+
     for (let i = 1; i <= 30; i++) {
       const results = await searchMovies(query, i);
       if (results.length === 0) {

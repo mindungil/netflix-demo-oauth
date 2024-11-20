@@ -1,59 +1,88 @@
 .profile {
   text-align: center;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: transparent;
   font-size: 1.4rem;
 }
 
 .password-change {
-  padding: 5px;
-  margin-top: 0px;
-  margin-bottom: 5px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-color: transparent;
+  padding: 20px;
+  margin: auto;
+  margin-top: 10vh;
+  background-color: #f8f9fa; /* 부드러운 배경색 */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
   width: 100%;
+  max-width: 500px;
 }
 
 .password {
+  background-color: transparent;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin: 3px 0;
-  width: 100%; /* 부모의 가로 너비에 맞게 설정 */
-  max-width: 400px; /* 최대 너비를 설정하여 중앙 정렬이 깔끔하게 보이도록 */
+  align-items: center; /* 수직 가운데 정렬 */
+  justify-content: space-between; /* 레이블과 input 사이 간격 */
+  margin-bottom: 15px; /* 각 줄 간격 */
+  width: 100%;
 }
 
 .password label {
-  width: 150px;
-  margin-right: 10px;
-  text-align: left;
-  white-space: nowrap;
+  font-size: medium;
+  background-color: transparent;
+  width: 30%; /* 레이블 고정 너비 */
+  font-weight: bold; /* 텍스트 강조 */
+  color: #333; /* 텍스트 색상 */
+  text-align: right; /* 텍스트 오른쪽 정렬 */
+  margin-right: 10px; /* 레이블과 input 사이 간격 */
 }
 
 .password input {
-  flex: 1;
-  padding: 8px;
-  border: 1px solid #ccc;
+  flex: 1; /* 남은 공간을 모두 사용 */
+  padding: 10px;
+  border: 1px solid #ddd;
   border-radius: 5px;
-  background-color: #f0f0f0;
+  background-color: #fff; /* 흰색 배경 */
+  color: #000; /* 검정색 텍스트 */
+  font-size: 1rem;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease;
+}
+
+.password input:focus {
+  border-color: #1e90ff;
+  outline: none; /* 외곽선 제거 */
 }
 
 button {
-  padding: 10px 15px;
+  padding: 10px 20px;
   margin-top: 10px;
   border: none;
   border-radius: 5px;
   background-color: #1e90ff;
   color: white;
+  font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
   background-color: #007acc;
+  transform: translateY(-2px); /* 미세한 이동 효과 */
 }
 
-.logout-button {
-  margin-top: 60px;
+.profile button {
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #dc3545; /* 붉은색 */
+  font-size: 0.9rem;
+}
+
+.profile button:hover {
+  background-color: #c82333;
 }

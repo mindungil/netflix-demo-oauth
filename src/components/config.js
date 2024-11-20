@@ -40,4 +40,14 @@ export function checkLocalStorage(data) {
         localStorage.setItem('wishlist', JSON.stringify(localData));
         successMessage('위시리스트에 추가되었습니다.');
     }
-}   
+}  
+
+export const fetchId = () => {
+    try {
+    const user = JSON.parse(localStorage.getItem('users'));
+    return user.email;
+    } catch(err) {
+        console.error("로컬 스토리지 fetch 오류: ", err);
+        throw err;
+    }
+}

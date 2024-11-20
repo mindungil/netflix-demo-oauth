@@ -5,7 +5,7 @@
 .movie-list {
   background-color: black;
   display: grid;
-  gap: 20px;
+  gap: 1vh;
   padding-top: 60px;
 }
 
