@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import './Profile.css';
 import { errorMessage, successMessage } from '../CustomToast';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 function Profile() {
   const [id, setId] = useState(null);
@@ -64,8 +66,8 @@ function Profile() {
 
   return (
     <div className="profile">
-      <h2>내 정보</h2>
-      <p>내 아이디:    {id}</p>
+      <h2><i class="fas fa-user-edit"></i></h2>
+      <p><i class="fas fa-id-card"></i>     {id}</p>
 
       <button className="logout-button" onClick={handleLogout}>로그아웃</button>  
       
