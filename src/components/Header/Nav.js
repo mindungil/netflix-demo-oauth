@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.css';
-import { fetchId } from '../config';
-import { successMessage } from '../CustomToast';
+import { fetchId } from '../../Util/config';
+import { successMessage } from '../../Util/CustomToast';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function Nav() {

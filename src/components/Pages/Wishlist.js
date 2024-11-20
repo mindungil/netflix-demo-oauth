@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { MovieItem2 } from '../Movie/MovieItem';
 import './Wishlist.css';
-import usePage from '../CustomHook/usePage';
+import usePage from '../../CustomHook/usePage';
 
 function Wishlist() {
   const [movies, setMovies] = useState([]);
