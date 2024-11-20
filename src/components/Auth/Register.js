@@ -1,6 +1,5 @@
 // src/components/Auth/Register.js
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './Auth.css';
 import { errorMessage, successMessage } from '../CustomToast';
 
@@ -9,7 +8,6 @@ function Register({ changeAuth ,state }) {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [termsAccepted, setTermsAccepted] = useState(false);
-  const navigate = useNavigate();
 
   const handleRegister = () => {
     if (password !== confirmPassword) {

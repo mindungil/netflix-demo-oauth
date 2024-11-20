@@ -6,7 +6,6 @@ import Popular from './components/Pages/Popular';
 import Search from './components/Pages/Search';
 import Wishlist from './components/Pages/Wishlist';
 import Profile from './components/Pages/Profile';
-import Signin from './components/Auth/Signin';
 import { HandleAuth } from './components/Auth/HandleAuth';
 import { useSelector } from 'react-redux';
 

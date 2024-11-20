@@ -70,7 +70,7 @@ function Nav() {
           {id}
         </Link>
         <a
-          href="#"
+          href="/"
           onClick={(event) => {
             event.preventDefault(); // 기본 링크 이동 동작 방지
             handleLogout();
