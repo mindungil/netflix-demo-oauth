@@ -25,3 +25,23 @@ jobs:
 
       - name: Build                   # React Build
         run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build
+
+      - name: Send Email Notification # Email 알림 전송
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com            # 이메일 서버 (예: Gmail)
+          server_port: 587                          # SMTP 포트
+          username: ${{ secrets.EMAIL_USERNAME }}   # 이메일 사용자 이름 (보통 이메일 주소)
+          subject: "React Build and Deploy Complete"
+          to: ${{ secrets.EMAIL_USERNAME }}                   # 수신자 이메일
+          from: mindungil@github.io               # 발신자 이메일
+          body: |
+            The React build and deployment process has been completed successfully!
+            You can check the deployed site on GitHub Pages. 
+
