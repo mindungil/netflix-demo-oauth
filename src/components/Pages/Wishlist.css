@@ -27,7 +27,7 @@
   width: 40px;
   height: 40px;
   border: 4px solid #f3f3f3;
-  border-top: 4px solid #3498db;
+  border-top: 4px solid #70208e;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 20px auto;
@@ -48,7 +48,7 @@
 }
 
 .pagination button {
-  background-color: #3498db;
+  background-color: #8f44da;
   font-weight: bold;
   color: #fff;
   border: none;
@@ -64,32 +64,12 @@
 }
 
 .pagination button:hover:not(:disabled) {
-  background-color: #2980b9; /* 활성화된 버튼 호버 색상 */
+  background-color: #d198e4; /* 활성화된 버튼 호버 색상 */
 }
 
 .pagination span {
   color: white;
 }
-
-/* 페이지 상단으로 이동하는 버튼
-.top-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: white;
-  color: black;
-  border: none;
-  border-radius: 50%;
-  padding: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
-}
-
-.top-button:hover {
-  background-color: #b7942e;
-} */
 
 .wishlist-container {
   padding-top: 20px;
@@ -100,4 +80,47 @@
   margin-bottom: 20px;
   font-size: 2rem;
   font-weight: bold;
+}
+
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+  .wish-list {
+    grid-template-columns: repeat(auto-fill, minmax(50%, 1fr)); /* 영화 아이템을 2열로 표시 */
+    gap: 2vh; /* 간격 조정 */
+  }
+
+  .wishlist-header {
+    font-size: 1.5rem; /* 헤더 크기 줄임 */
+  }
+
+  .wishlist-item {
+    margin: 0.5rem; /* 아이템 간격 조정 */
+    padding: 8px; /* 패딩 감소 */
+  }
+
+  .pagination button {
+    padding: 6px 12px; /* 버튼 크기 조정 */
+    font-size: 14px; /* 버튼 텍스트 크기 감소 */
+  }
+}
+
+@media (max-width: 480px) {
+  .wish-list {
+    grid-template-columns: 1fr; /* 영화 아이템을 1열로 표시 */
+    gap: 2vh;
+  }
+
+  .wishlist-header {
+    font-size: 1.2rem; /* 더 작은 헤더 크기 */
+  }
+
+  .wishlist-item {
+    padding: 6px; /* 더 작은 패딩 */
+    font-size: 14px; /* 텍스트 크기 줄임 */
+  }
+
+  .pagination button {
+    font-size: 12px; /* 버튼 텍스트 크기 감소 */
+  }
 }
