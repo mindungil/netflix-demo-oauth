@@ -6,7 +6,6 @@
   background-color: black;
   display: grid;
   gap: 1vh;
-  padding-top: 60px;
 }
 
 .movie-item {
@@ -30,11 +29,11 @@
 .table-view {
   background-color: black;
   display: grid; /* display: grid를 명시적으로 선언 */
-  grid-template-columns: repeat(auto-fill, minmax(35vh, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(38svh, 1fr));
 }
 
 .scroll-view {
-    display: grid; /* display: grid를 명시적으로 선언 */
+  display: grid; /* display: grid를 명시적으로 선언 */
   grid-template-columns: repeat(auto-fill, minmax(35vh, 1fr));
 }
 
@@ -45,14 +44,13 @@
   justify-content: center;
   margin: auto;
   flex-direction: row;
-  gap: 10px;
   font-size: 0.8em;
   background: transparent; /* 불필요한 배경 색상 제거 */
   padding: 5px; /* 버튼 간격 조정 */
 }
 
 .pagination button {
-  padding: 4px 8px;
+  padding: 0.5vh 1vh;
   font-size: 0.9em;
   border: none;
   background-color: transparent;

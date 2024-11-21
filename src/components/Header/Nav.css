@@ -54,3 +54,61 @@
   color:rgb(224, 136, 136);
   margin-left: auto;
 }
+
+/* 햄버거 버튼 스타일 */
+.hamburger {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  margin: 10vh;
+  color: white;
+  justify-content: space-around;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 6vh;
+  height: 6vh;  
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  z-index: 10; /* 메뉴보다 위로 */
+}
+
+.hamburger:hover {
+  background-color: transparent;
+}
+
+/* 반응형 네비게이션 */
+.nav-links {
+  display: flex;
+  background-color: transparent;
+  gap: 10vh;
+  transition: all 0.3s ease;
+}
+
+.nav-links.open {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  position: absolute;
+  top: 60px; /* nav 높이 이후 */
+  right: 0;
+  width: 100%;
+  height: calc(100vh - 60px);
+  gap: 20px;
+  align-items: center;
+  padding: 20px 0;
+}
+
+@media (max-width: 1000px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+}

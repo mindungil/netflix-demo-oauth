@@ -10,21 +10,23 @@ import { setFalse } from '../../reducer/boolean';
 function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [id, setId] = useState();
-  const logState = useSelector((state)=>state.boolean.value);
+  const [menuOpen, setMenuOpen] = useState(false); // 햄버거 메뉴 상태
+  const logState = useSelector((state) => state.boolean.value);
   const dispatch = useDispatch();
-  const navLinkRef = useRef(null); // >>>>>> DOM 접근 구현
+  const navLinkRef = useRef(null);
   const navLinkRef2 = useRef(null);
 
-  
   useEffect(() => {
     let userId = "";
-    if(logState) userId = fetchId();
+    const localLogCheck = JSON.parse(localStorage.getItem('logged')) | {};
+    if (logState || localLogCheck) userId = fetchId();
     setId(userId);
+    console.log(userId);
   }, [logState]);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50); // 스크롤 50px 이상 시 효과
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -37,7 +39,7 @@ function Nav() {
     localStorage.setItem('logged', JSON.stringify(false));
     dispatch(setFalse());
     setId("");
-    window.location.reload(); // 페이지 리로드
+    window.location.reload();
     successMessage("로그아웃 되었습니다.");
   };
 
@@ -52,7 +54,6 @@ function Nav() {
   };
 
   const generateRandomColor = () => {
-    // RGB 색상에서 검정색 계열(0~50)의 값은 제외
     const getRandomValue = () => Math.floor(Math.random() * (255 - 50) + 50);
     const r = getRandomValue();
     const g = getRandomValue();
@@ -60,36 +61,51 @@ function Nav() {
     return `rgb(${r}, ${g}, ${b})`;
   };
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <nav className={`nav ${isScrolled ? 'scrolled' : ''}`}>
       <Link to="/" className="nav-link logo">GILFLIX</Link>
-      <div className="nav-links">
-        <Link to="/" className="nav-link">메인</Link>
-        <Link to="/popular" className="nav-link">대세 콘텐츠</Link>
-        <Link to="/search" className="nav-link">찾아보기</Link>
-        <Link to="/wishlist" className="nav-link">위시리스트</Link>
-        <Link to="/profile" className="nav-link">내 정보</Link>
+      <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
+        <Link to="/" className="nav-link" onClick={closeMenu}>메인</Link>
+        <Link to="/popular" className="nav-link" onClick={closeMenu}>대세 콘텐츠</Link>
+        <Link to="/search" className="nav-link" onClick={closeMenu}>찾아보기</Link>
+        <Link to="/wishlist" className="nav-link" onClick={closeMenu}>위시리스트</Link>
+        <Link to="/profile" className="nav-link" onClick={closeMenu}>내 정보</Link>
         <Link
           to="/profile"
-          className="nav-link2"
+          className="nav-link"
           ref={navLinkRef}
-          onClick={changeRandomColor}
+          onClick={() => {
+            closeMenu();
+            changeRandomColor();
+          }}
         >
-          <i class="fas fa-user" style={{margin: 3}}></i>
+          <i className="fas fa-user" style={{ margin: 3 }}></i>
           {id}
         </Link>
         <a
           href="/"
           onClick={(event) => {
-            event.preventDefault(); // 기본 링크 이동 동작 방지
+            event.preventDefault();
+            closeMenu();
             handleLogout();
           }}
           ref={navLinkRef2}
-          className='nav-link2'
+          className='nav-link'
         >
           로그아웃
         </a>
       </div>
+      <button className="hamburger" onClick={toggleMenu}>
+      <i className={`fas ${menuOpen ? 'fa-times' : 'fa-bars'}`} />
+      </button>
     </nav>
   );
 }

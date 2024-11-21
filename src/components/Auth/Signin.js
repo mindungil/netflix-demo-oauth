@@ -41,11 +41,12 @@ function Signin({ changeAuth, state }) {
       console.log('로그인 성공 조건 실행');
       if(checkBox) {
         localStorage.setItem('logged', 'true');
-        dispatch(setTrue());
       }
       else localStorage.setItem('logged', 'false');
 
+      dispatch(setTrue());
       successMessage("로그인에 성공하였습니다.");
+      
       // localStorage에 false 값만 저장, 전역 state 자체는 true 값이어야 함.
       localStorage.setItem('searchlist', JSON.stringify([]));
       navigate('/');

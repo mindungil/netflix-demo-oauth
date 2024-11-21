@@ -22,3 +22,42 @@ button {
   color: black;
   background-color: white;
 }
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+  body {
+    padding-top: 5vh; /* 모바일에서 상단 여백 줄임 */
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  p {
+    font-size: 14px; /* 텍스트 크기를 줄여 가독성 향상 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+  }
+
+  h2 {
+    font-size: 18px; /* 제목 크기 조정 */
+    text-align: center; /* 모바일에서 중앙 정렬 */
+  }
+
+  button {
+    width: 100%; /* 버튼을 전체 너비로 설정 */
+    padding: 10px; /* 버튼 클릭 영역 확장 */
+    font-size: 16px; /* 버튼 텍스트 크기 증가 */
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding-top: 3vh; /* 더 작은 화면에서 상단 여백 줄임 */
+  }
+
+  p {
+    font-size: 12px; /* 더 작은 텍스트 크기 */
+  }
+
+  button {
+    font-size: 14px; /* 더 작은 버튼 텍스트 */
+  }
+}
