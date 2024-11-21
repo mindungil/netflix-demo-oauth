@@ -112,3 +112,54 @@
     opacity: 0;
   }
 }
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+  .main-poster {
+    width: 100%; /* 모바일 화면에 맞게 조정 */
+    height: 40vh; /* 포스터 높이 축소 */
+  }
+
+  .poster-inform {
+    max-width: 90%; /* 모바일에서 최대 너비 확장 */
+    padding: 1rem;
+  }
+
+  .poster-inform p:first-child {
+    font-size: 1.5rem; /* 제목 크기 축소 */
+    margin-top: 20px; /* 상단 마진 축소 */
+  }
+
+  .poster-inform p:nth-child(2) {
+    font-size: 0.9rem; /* 설명 텍스트 크기 축소 */
+  }
+
+  .tracking-out-expand-fwd {
+    font-size: 28px; /* 애니메이션 텍스트 크기 조정 */
+  }
+}
+
+@media (max-width: 480px) {
+  .main-poster {
+    height: 30vh; /* 더 작은 화면에서 포스터 높이 축소 */
+  }
+
+  .poster-inform {
+    max-width: 95%; /* 더 작은 화면에서 너비 확장 */
+    padding: 0.8rem;
+  }
+
+  .poster-inform p:first-child {
+    font-size: 1.2rem; /* 제목 크기 축소 */
+  }
+
+  .poster-inform p:nth-child(2) {
+    font-size: 0.8rem; /* 설명 텍스트 크기 축소 */
+    line-height: 1.4;
+  }
+
+  .tracking-out-expand-fwd {
+    font-size: 24px; /* 더 작은 텍스트 크기 */
+    top: 20px; /* 위치 조정 */
+  }
+}
