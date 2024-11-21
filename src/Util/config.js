@@ -41,7 +41,7 @@ export function checkLocalStorage(data) {
 
 export const fetchId = () => {
     try {
-    const user = JSON.parse(localStorage.getItem('users'));
+    const user = JSON.parse(localStorage.getItem('users')) || {};
     return user.email;
     } catch(err) {
         console.error("로컬 스토리지 fetch 오류: ", err);
