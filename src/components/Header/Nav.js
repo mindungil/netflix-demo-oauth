@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Nav.css';
 import { fetchId } from '../../Util/config';
-import { successMessage } from '../../Util/CustomToast';
+import { errorMessage, successMessage } from '../../Util/CustomToast';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFalse } from '../../reducer/boolean';
@@ -13,6 +13,7 @@ function Nav() {
   const [menuOpen, setMenuOpen] = useState(false); // 햄버거 메뉴 상태
   const logState = useSelector((state) => state.boolean.value);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const navLinkRef = useRef(null);
   const navLinkRef2 = useRef(null);
 
@@ -39,8 +40,9 @@ function Nav() {
     localStorage.setItem('logged', JSON.stringify(false));
     dispatch(setFalse());
     setId("");
-    window.location.reload();
+
     successMessage("로그아웃 되었습니다.");
+    navigate('/');
   };
 
   const changeRandomColor = () => {
@@ -95,7 +97,7 @@ function Nav() {
           onClick={(event) => {
             event.preventDefault();
             closeMenu();
-            handleLogout();
+            logState ? handleLogout() : errorMessage("로그인 상태가 아닙니다.");
           }}
           ref={navLinkRef2}
           className='nav-link'

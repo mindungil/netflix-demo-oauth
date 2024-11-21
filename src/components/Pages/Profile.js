@@ -5,6 +5,7 @@ import { errorMessage, successMessage } from '../../Util/CustomToast';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { useDispatch } from 'react-redux';
 import { setFalse } from '../../reducer/boolean';
+import { useNavigate } from 'react-router-dom';
 
 
 function Profile() {
@@ -13,6 +14,7 @@ function Profile() {
   const [newPassword, setNewPassword] = useState('');
   const [newPasswordConfirm, setNewPasswordConfirm] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const fetchLocalStorage = () => {
     try {
@@ -60,8 +62,9 @@ function Profile() {
     localStorage.setItem('logged', JSON.stringify(false));
     dispatch(setFalse());
     setId("");
-    window.location.reload(); // 예시: 페이지 리로드
     successMessage("로그아웃 되었습니다.");
+
+    navigate('/');
   };
 
   useEffect(() => {
