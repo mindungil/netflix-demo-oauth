@@ -18,7 +18,8 @@ function Nav() {
 
   useEffect(() => {
     let userId = "";
-    if (logState) userId = fetchId();
+    const localLogCheck = JSON.parse(localStorage.getItem('logged')) | {};
+    if (logState || localLogCheck) userId = fetchId();
     setId(userId);
     console.log(userId);
   }, [logState]);
@@ -79,7 +80,7 @@ function Nav() {
         <Link to="/profile" className="nav-link" onClick={closeMenu}>내 정보</Link>
         <Link
           to="/profile"
-          className="nav-link2"
+          className="nav-link"
           ref={navLinkRef}
           onClick={() => {
             closeMenu();
@@ -97,7 +98,7 @@ function Nav() {
             handleLogout();
           }}
           ref={navLinkRef2}
-          className='nav-link2'
+          className='nav-link'
         >
           로그아웃
         </a>

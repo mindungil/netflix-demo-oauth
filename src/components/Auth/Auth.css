@@ -53,7 +53,7 @@
   }
   
   .signin button:hover, .register button:hover {
-    background-color: #007acc; /* Darker blue on hover */
+    background-color: #b65559; /* Darker blue on hover */
   }
 
   .flip-in-hor-bottom {
