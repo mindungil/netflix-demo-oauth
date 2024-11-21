@@ -4,10 +4,13 @@ import './Nav.css';
 import { fetchId } from '../../Util/config';
 import { successMessage } from '../../Util/CustomToast';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import { useDispatch } from 'react-redux';
+import { setFalse } from '../../reducer/boolean';
 
 function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [id, setId] = useState();
+  const dispatch = useDispatch();
   const navLinkRef = useRef(null); // >>>>>> DOM 접근 구현
   const navLinkRef2 = useRef(null);
   useEffect(() => {
@@ -28,6 +31,7 @@ function Nav() {
 
   const handleLogout = () => {
     localStorage.setItem('logged', JSON.stringify(false));
+    dispatch(setFalse());
     window.location.reload(); // 페이지 리로드
     successMessage("로그아웃 되었습니다.");
   };

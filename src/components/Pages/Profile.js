@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import './Profile.css';
 import { errorMessage, successMessage } from '../../Util/CustomToast';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import { useDispatch } from 'react-redux';
+import { setFalse } from '../../reducer/boolean';
 
 
 function Profile() {
@@ -10,6 +12,7 @@ function Profile() {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [newPasswordConfirm, setNewPasswordConfirm] = useState('');
+  const dispatch = useDispatch();
 
   const fetchLocalStorage = () => {
     try {
@@ -55,6 +58,7 @@ function Profile() {
 
   const handleLogout = () => {
     localStorage.setItem('logged', JSON.stringify(false));
+    dispatch(setFalse());
     window.location.reload(); // 예시: 페이지 리로드
     successMessage("로그아웃 되었습니다.");
   };
