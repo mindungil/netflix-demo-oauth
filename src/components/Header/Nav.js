@@ -4,20 +4,23 @@ import './Nav.css';
 import { fetchId } from '../../Util/config';
 import { successMessage } from '../../Util/CustomToast';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setFalse } from '../../reducer/boolean';
 
 function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [id, setId] = useState();
+  const logState = useSelector((state)=>state.boolean.value);
   const dispatch = useDispatch();
   const navLinkRef = useRef(null); // >>>>>> DOM 접근 구현
   const navLinkRef2 = useRef(null);
 
+  
   useEffect(() => {
-    const userId = fetchId();
+    let userId = "";
+    if(logState) userId = fetchId();
     setId(userId);
-  }, []);
+  }, [logState]);
 
   useEffect(() => {
     const handleScroll = () => {
