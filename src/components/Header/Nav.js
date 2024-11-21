@@ -13,6 +13,7 @@ function Nav() {
   const dispatch = useDispatch();
   const navLinkRef = useRef(null); // >>>>>> DOM 접근 구현
   const navLinkRef2 = useRef(null);
+
   useEffect(() => {
     const userId = fetchId();
     setId(userId);
@@ -32,6 +33,7 @@ function Nav() {
   const handleLogout = () => {
     localStorage.setItem('logged', JSON.stringify(false));
     dispatch(setFalse());
+    setId("");
     window.location.reload(); // 페이지 리로드
     successMessage("로그아웃 되었습니다.");
   };

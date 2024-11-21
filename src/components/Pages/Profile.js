@@ -59,6 +59,7 @@ function Profile() {
   const handleLogout = () => {
     localStorage.setItem('logged', JSON.stringify(false));
     dispatch(setFalse());
+    setId("");
     window.location.reload(); // 예시: 페이지 리로드
     successMessage("로그아웃 되었습니다.");
   };
