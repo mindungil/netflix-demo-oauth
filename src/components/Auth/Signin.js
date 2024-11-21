@@ -10,6 +10,7 @@ import { toggle, setTrue } from '../../reducer/boolean';
 function Signin({ changeAuth, state }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [checkBox, setCheckBox] = useState(false);
   const isChecked = useSelector((state) => state.boolean.value);
   // console.log(isChecked+ " : is cheked real");
 
@@ -18,7 +19,7 @@ function Signin({ changeAuth, state }) {
 
   const handleLogin = async () => {
     // localStorage에서 등록된 사용자 정보를 가져옴
-    const userKey = localStorage.getItem('users');
+    const userKey = localStorage.getItem('users') || {};
     let userData = null;
     
     if (userKey) {
@@ -32,17 +33,20 @@ function Signin({ changeAuth, state }) {
     } else {
       console.log('No user data found');
     }
-
   
     if (!userData || email !== userData.email || password !== userData.password) {
       console.log('로그인 실패 조건 실행');
       errorMessage('로그인에 실패하였습니다.');
     } else {
       console.log('로그인 성공 조건 실행');
-      if(isChecked) localStorage.setItem('logged', 'true');
+      if(checkBox) {
+        localStorage.setItem('logged', 'true');
+        dispatch(setTrue());
+      }
       else localStorage.setItem('logged', 'false');
+
       successMessage("로그인에 성공하였습니다.");
-      dispatch(setTrue()); // localStorage에 false 값만 저장, 전역 state 자체는 true 값이어야 함.
+      // localStorage에 false 값만 저장, 전역 state 자체는 true 값이어야 함.
       localStorage.setItem('searchlist', JSON.stringify([]));
       navigate('/');
     }
@@ -68,7 +72,7 @@ function Signin({ changeAuth, state }) {
         onChange={(e) => setPassword(e.target.value)}
       />
       <label>
-        <input type="checkbox" onChange={() => dispatch(toggle())}/> Remember me
+        <input type="checkbox" onChange={() => setCheckBox(!checkBox)}/> Remember me
       </label>
       <button onClick={handleLogin}>로그인</button>
       <button onClick={handleAuth}>회원가입</button>
