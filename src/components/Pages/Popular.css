@@ -9,3 +9,6 @@
   margin: 1rem;
 }
 
+.popular button:hover {
+  background-color: #9f3a8b;
+}

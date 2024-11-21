@@ -35,9 +35,7 @@ function Profile() {
     } catch(err) {
       console.error("비밀번호 저장 실패 : ", err);
       throw err;  
-    } finally {
-      window.location.reload(true);
-    }
+    } 
   }
 
   const handlePasswordChange = () => {
@@ -55,7 +53,9 @@ function Profile() {
     }
     // 백엔드와 연결하여 비밀번호 변경 요청 보내기
     saveLocalStorage(newPassword);
+    successMessage("비밀번호가 변경되었습니다.");
 
+    navigate('/');
   };
 
   const handleLogout = () => {
