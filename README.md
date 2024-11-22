@@ -71,10 +71,10 @@ TMDB API를 활용하여 제작한 Netflix 클론 웹 애플리케이션입니�
 4. **빌드 및 배포**
    npm run build  
    정적 파일이 `build/` 디렉토리에 생성되며, 이를 GitHub Pages 등에 업로드하여 배포 가능.
-   
+
 ### **실행 가이드** ###
  - **TMDB API 발급**
-   TMDB-API key 를 발급받아, 웹 사이트의 비밀번호로 사용.
+   TMDB-API key 를 발급받아 웹 사이트의 비밀번호로 사용해야, API 호출 가능합니다.
 
 ## **폴더 구조**
     📦src
