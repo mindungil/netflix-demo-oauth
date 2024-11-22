@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Nav.css';
 import { fetchId } from '../../Util/config';
 import { errorMessage, successMessage } from '../../Util/CustomToast';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faIdBadge } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFalse } from '../../reducer/boolean';
 
@@ -89,7 +90,7 @@ function Nav() {
             changeRandomColor();
           }}
         >
-          <i className="fas fa-user" style={{ margin: 3 }}></i>
+          <FontAwesomeIcon icon={faIdBadge} style={{marginRight: 3}} />
           {id}
         </Link>
         <a
