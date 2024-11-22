@@ -2,9 +2,11 @@
 import React, { useEffect, useState } from 'react';
 import './Profile.css';
 import { errorMessage, successMessage } from '../../Util/CustomToast';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faIdCard, faIdCardClip } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
 import { setFalse } from '../../reducer/boolean';
+import { useNavigate } from 'react-router-dom';
 
 
 function Profile() {
@@ -13,6 +15,7 @@ function Profile() {
   const [newPassword, setNewPassword] = useState('');
   const [newPasswordConfirm, setNewPasswordConfirm] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const fetchLocalStorage = () => {
     try {
@@ -33,9 +36,7 @@ function Profile() {
     } catch(err) {
       console.error("비밀번호 저장 실패 : ", err);
       throw err;  
-    } finally {
-      window.location.reload(true);
-    }
+    } 
   }
 
   const handlePasswordChange = () => {
@@ -53,15 +54,18 @@ function Profile() {
     }
     // 백엔드와 연결하여 비밀번호 변경 요청 보내기
     saveLocalStorage(newPassword);
+    successMessage("비밀번호가 변경되었습니다.");
 
+    navigate('/');
   };
 
   const handleLogout = () => {
     localStorage.setItem('logged', JSON.stringify(false));
     dispatch(setFalse());
     setId("");
-    window.location.reload(); // 예시: 페이지 리로드
     successMessage("로그아웃 되었습니다.");
+
+    navigate('/');
   };
 
   useEffect(() => {
@@ -71,8 +75,8 @@ function Profile() {
 
   return (
     <div className="profile">
-      <h2><i class="fas fa-user-edit"></i></h2>
-      <p><i class="fas fa-id-card"></i>     {id}</p>
+      <h2><FontAwesomeIcon icon={faIdCard} /></h2>
+      <p><FontAwesomeIcon icon={faIdCardClip} />     {id}</p>
 
       <button className="logout-button" onClick={handleLogout}>로그아웃</button>  
       

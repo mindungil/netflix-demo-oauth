@@ -5,6 +5,17 @@ export const EMAGE_URL_500 = 'https://image.tmdb.org/t/p/w500/'; //w500 크기
 export const EMAGE_URL_300 = 'https://image.tmdb.org/t/p/w300/';
 export const EMAGE_URL_200 = 'https://image.tmdb.org/t/p/w200/';
 
+export const fetchApi = () => {
+    let api_key;
+    try {
+        api_key = JSON.parse(localStorage.getItem('TMDB-key')) || {};
+        return api_key;
+    } catch(err) {
+        console.error("로컬 스토리지에서 TMDB-key 가져오기 오류");
+        throw err;
+    }
+}
+
 export function checkLocalStorage(data) {
     // localStorage에서 데이터 가져오기
     const localDataString = localStorage.getItem('wishlist');

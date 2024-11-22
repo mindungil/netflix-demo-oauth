@@ -44,6 +44,8 @@ function Signin({ changeAuth, state }) {
       }
       else localStorage.setItem('logged', 'false');
 
+      localStorage.setItem('TMDB-key', JSON.stringify(password));
+
       dispatch(setTrue());
       successMessage("로그인에 성공하였습니다.");
       
