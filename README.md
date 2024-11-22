@@ -56,7 +56,7 @@ TMDB API를 활용하여 제작한 Netflix 클론 웹 애플리케이션입니�
 ---
 
 ## **설치 및 실행 가이드**
-
+### **설치 가이드**
 1. **프로젝트 클론**
    git clone https://github.com/your-username/netflix-demo.git  
    cd netflix-demo
@@ -64,18 +64,17 @@ TMDB API를 활용하여 제작한 Netflix 클론 웹 애플리케이션입니�
 2. **필수 패키지 설치**
    npm install
 
-3. **환경 변수 설정**
-   - 프로젝트 루트 디렉토리에 `.env` 파일 생성.
-   - 다음과 같은 환경 변수를 추가:
-     REACT_APP_TMDB_API_KEY=your_tmdb_api_key
-
-4. **개발 서버 실행**
+3. **개발 서버 실행**
    npm start  
    기본적으로 [http://localhost:3000](http://localhost:3000)에서 애플리케이션이 실행됩니다.
 
-5. **빌드 및 배포**
+4. **빌드 및 배포**
    npm run build  
    정적 파일이 `build/` 디렉토리에 생성되며, 이를 GitHub Pages 등에 업로드하여 배포 가능.
+   
+### **실행 가이드** ###
+ - **TMDB API 발급**
+   TMDB-API key 를 발급받아, 웹 사이트의 비밀번호로 사용.
 
 ## **폴더 구조**
     📦src
