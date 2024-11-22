@@ -6,7 +6,14 @@
   }
 
 .popular button {
+  color: white;
+  margin-left: auto;
   margin: 1rem;
+}
+
+.fas{
+  color: black;
+  background-color: transparent;
 }
 
 .popular button:hover {
