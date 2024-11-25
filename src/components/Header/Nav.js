@@ -4,7 +4,7 @@ import './Nav.css';
 import { fetchId } from '../../Util/config';
 import { errorMessage, successMessage } from '../../Util/CustomToast';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faIdBadge } from '@fortawesome/free-solid-svg-icons';
+import { faIdBadge, faBars } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFalse } from '../../reducer/boolean';
 
@@ -107,7 +107,7 @@ function Nav() {
         </a>
       </div>
       <button className="hamburger" onClick={toggleMenu}>
-      <i className={`fas ${menuOpen ? 'fa-times' : 'fa-bars'}`} />
+        <FontAwesomeIcon icon={faBars} />
       </button>
     </nav>
   );
