@@ -10,7 +10,7 @@ export const successMessage = (message) => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "dark",
+        theme: "black",  
         transition: Bounce,
         });
 }
@@ -24,7 +24,7 @@ export const errorMessage = (message) => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "dark",
+        theme: "black",
         transition: Bounce,
         });
 }
