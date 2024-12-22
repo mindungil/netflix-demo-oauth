@@ -1,23 +1,23 @@
 import axios from 'axios';
 import { fetchApi } from '../../Util/config';
+import dotenv from 'dotenv';
 
-// const API_URL = process.env.REACT_APP_API_URL;
-// const API_ACCESS = process.env.REACT_APP_API_ACCESS;
+dotenv.config({path: '.env-dev'});
 
-export const API_URL = 'https://api.themoviedb.org/3'; 
+const API_URL = process.env.REACT_APP_API_URL;
+const API_ACCESS = process.env.REACT_APP_API_ACCESS;
 
 export const fetchMovies = async (page = 1) => {
   try {
-    const ApiData = await fetchApi();
     const res = await axios.get(`${API_URL}/movie/popular`, {
       params: {
         language: 'ko-KR',
         page,
-        api_key: ApiData,
+        // api_key: ApiData,
       },
       headers: {
         accept: 'application/json',
-        // Authorization: API_ACCESS,
+        Authorization: API_ACCESS,
       },
     });
     return res.data.results;

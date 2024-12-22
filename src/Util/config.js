@@ -1,4 +1,4 @@
-import { successMessage } from "./CustomToast";
+import { successMessage } from "./CustomToast.js";
 
 export const EMAGE_BASE_URL_1280 = 'https://image.tmdb.org/t/p/w1280/'; //w1280 크기
 export const EMAGE_URL_500 = 'https://image.tmdb.org/t/p/w500/'; //w500 크기
@@ -9,6 +9,7 @@ export const fetchApi = () => {
     let api_key;
     try {
         api_key = JSON.parse(localStorage.getItem('TMDB-key')) || {};
+        console.log(api_key);
         return api_key;
     } catch(err) {
         console.error("로컬 스토리지에서 TMDB-key 가져오기 오류");

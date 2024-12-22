@@ -11,13 +11,13 @@ import store from './reducer/store';
 function App() {
   return (  
     <>
-    <ToastContainer/>
-    <Provider store={store}>
-    <Router>
-      <Header />
-      <AppRouter />
-    </Router>
-    </Provider>
+      <ToastContainer/>
+      <Provider store={store}>
+      <Router>
+        <Header />
+        <AppRouter />
+      </Router>
+      </Provider>
     </>
   );
 }
