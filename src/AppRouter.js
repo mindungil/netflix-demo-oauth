@@ -24,11 +24,11 @@ function AppRouter() {
       <Routes basename={process.env.PUBLIC_URL}>
         <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path="/netflix-demo" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-        <Route path="/popular" element={<ProtectedRoute><Popular /></ProtectedRoute>}/>
-        <Route path="/search" element={<ProtectedRoute><Search /></ProtectedRoute>} />
-        <Route path="/wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
-        <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-        <Route path="/signin" element={<HandleAuth />}></Route>
+        <Route path="/netflix-demo/popular" element={<ProtectedRoute><Popular /></ProtectedRoute>}/>
+        <Route path="/netflix-demo/search" element={<ProtectedRoute><Search /></ProtectedRoute>} />
+        <Route path="/netflix-demo/wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
+        <Route path="/netflix-demo/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+        <Route path="/netflix-demo/signin" element={<HandleAuth />}></Route>
       </Routes>
     </div>
   );

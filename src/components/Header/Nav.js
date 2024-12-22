@@ -74,15 +74,15 @@ function Nav() {
 
   return (
     <nav className={`nav ${isScrolled ? 'scrolled' : ''}`}>
-      <Link to="/" className="nav-link logo">GILFLIX</Link>
+      <Link to="/netflix-demo" className="nav-link logo">GILFLIX</Link>
       <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
-        <Link to="/" className="nav-link" onClick={closeMenu}>메인</Link>
-        <Link to="/popular" className="nav-link" onClick={closeMenu}>대세 콘텐츠</Link>
-        <Link to="/search" className="nav-link" onClick={closeMenu}>찾아보기</Link>
-        <Link to="/wishlist" className="nav-link" onClick={closeMenu}>위시리스트</Link>
-        <Link to="/profile" className="nav-link" onClick={closeMenu}>내 정보</Link>
+        <Link to="/netflix-demo" className="nav-link" onClick={closeMenu}>메인</Link>
+        <Link to="/netflix-demo/popular" className="nav-link" onClick={closeMenu}>대세 콘텐츠</Link>
+        <Link to="/netflix-demo/search" className="nav-link" onClick={closeMenu}>찾아보기</Link>
+        <Link to="/netflix-demo/wishlist" className="nav-link" onClick={closeMenu}>위시리스트</Link>
+        <Link to="/netflix-demo/profile" className="nav-link" onClick={closeMenu}>내 정보</Link>
         <Link
-          to="/profile"
+          to="/netflix-demo/profile"
           className="nav-link"
           ref={navLinkRef}
           onClick={() => {
