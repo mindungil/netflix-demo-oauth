@@ -48,7 +48,7 @@ export const MovieItem2 = ({movie}) => {
         onClick={() => checkLocalStorage(movie)}
       />
       <h3 className={'text-shadow-pop-bottom'}>{movie.title}</h3>
-      <p style={{margin: 0, paddingTop: 0}}>{createStarRating(movie.vote_average.toFixed(1))}</p>
+      <p style={{margin: 0, paddingTop: 0, justifyContent: 'center', textAlign: 'center', backgroundColor: 'transparent'}}>{createStarRating(movie.vote_average.toFixed(1))}</p>
       {/* <p style={{margin: 0, paddingTop: 0.6}} className='release_date'>{movie.release_date}</p> */}
     </div>
   );
