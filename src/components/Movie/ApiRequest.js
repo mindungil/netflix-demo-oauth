@@ -4,7 +4,7 @@ import { fetchApi } from '../../Util/config';
 // const API_URL = process.env.REACT_APP_API_URL;
 // const API_ACCESS = process.env.REACT_APP_API_ACCESS;
 
-export const API_URL = 'https://api.themoviedb.org/3'; 
+export const API_URL = process.env.REACT_APP_TMDB_URL; 
 
 export const fetchMovies = async (page = 1) => {
   try {
