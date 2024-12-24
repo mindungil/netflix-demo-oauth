@@ -31,11 +31,11 @@ jobs:
       # 4. 환경 변수 설정
       - name: Set environment variables
         run: |
-          echo "REACT_APP_RESTAPI_KEY=${{ secrets.REACT_APP_RESTAPI_KEY }}" >> .env
-          echo "REACT_APP_REDIRECT_URI=${{ secrets.REACT_APP_REDIRECT_URI }}" >> .env
-          echo "REACT_APP_JS_KEY=${{ secrets.REACT_APP_JS_KEY }}" >> .env
-          echo "REACT_APP_TMDB_URL=${{ secrets.REACT_APP_TMDB_URL }}" >> .env
-          echo "REACT_APP_TMDB_API=${{ secrets.REACT_APP_TMDB_API }}" >> .env
+          echo "REACT_APP_RESTAPI_KEY=${{ secrets.REACT_APP_RESTAPI_KEY }}" >> .env-prod
+          echo "REACT_APP_REDIRECT_URI=${{ secrets.REACT_APP_REDIRECT_URI }}" >> .env-prod
+          echo "REACT_APP_JS_KEY=${{ secrets.REACT_APP_JS_KEY }}" >> .env-prod
+          echo "REACT_APP_TMDB_URL=${{ secrets.REACT_APP_TMDB_URL }}" >> .env-prod
+          echo "REACT_APP_TMDB_API=${{ secrets.REACT_APP_TMDB_API }}" >> .env-prod
         env:
           REACT_APP_RESTAPI_KEY: ${{ secrets.REACT_APP_RESTAPI_KEY }}
           REACT_APP_REDIRECT_URI: ${{ secrets.REACT_APP_REDIRECT_URI }}
