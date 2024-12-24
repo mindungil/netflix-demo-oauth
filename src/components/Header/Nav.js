@@ -6,7 +6,7 @@ import { errorMessage, successMessage } from '../../Util/CustomToast';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faIdBadge, faBars } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFalse } from '../../reducer/boolean';
+import { setFalse, setTrue } from '../../reducer/boolean';
 
 function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,9 +21,18 @@ function Nav() {
   useEffect(() => {
     let userId = "";
     const localLogCheck = JSON.parse(localStorage.getItem('logged')) | {};
-    if (logState || localLogCheck) userId = fetchId();
-    setId(userId);
-    console.log(userId);
+    if (localLogCheck) {
+      userId = fetchId();
+      setId(userId);
+      console.log(userId);
+      console.log('state: ', logState);
+      console.log('localState: ', localLogCheck)
+
+      dispatch(setTrue());
+    } else {
+      dispatch(setFalse());
+      console.log('로그인 상태가 아닙니다.');
+    }
   }, [logState]);
 
   useEffect(() => {
@@ -93,8 +102,9 @@ function Nav() {
           <FontAwesomeIcon icon={faIdBadge} style={{marginRight: 3}} />
           {id}
         </Link>
+        {logState ? 
         <a
-          href="/"
+          href="/netflix-demo"
           onClick={(event) => {
             event.preventDefault();
             closeMenu();
@@ -104,7 +114,19 @@ function Nav() {
           className='nav-link'
         >
           로그아웃
+        </a> : 
+        <a
+          href="/netflix-demo/signin"
+          onClick={(event) => {
+            event.preventDefault();
+            closeMenu();
+          }}
+          ref={navLinkRef2}
+          className='nav-link'
+        >
+          로그인이 필요합니다.
         </a>
+        }
       </div>
       <button className="hamburger" onClick={toggleMenu}>
         <FontAwesomeIcon icon={faBars} />

@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { fetchApi } from '../../Util/config';
 
 // const API_URL = process.env.REACT_APP_API_URL;
 // const API_ACCESS = process.env.REACT_APP_API_ACCESS;
@@ -8,7 +7,7 @@ export const API_URL = process.env.REACT_APP_TMDB_URL;
 
 export const fetchMovies = async (page = 1) => {
   try {
-    const ApiData = await fetchApi();
+    const ApiData = process.env.REACT_APP_TMDB_API;
     const res = await axios.get(`${API_URL}/movie/popular`, {
       params: {
         language: 'ko-KR',
@@ -29,7 +28,7 @@ export const fetchMovies = async (page = 1) => {
 
 export const fetchGenres = async () => {
   try {
-    const ApiData = await fetchApi();
+    const ApiData = process.env.REACT_APP_TMDB_API;
     const res = await axios.get(`${API_URL}/genre/movie/list`, {
       params: {
         language: 'ko-KR',
@@ -49,7 +48,7 @@ export const fetchGenres = async () => {
 
 export const fetchTrends = async () => {
   try {
-    const ApiData = await fetchApi();
+    const ApiData = process.env.REACT_APP_TMDB_API;
     const res = await axios.get(`${API_URL}/trending/movie/week`, {
       params: {
         language: 'ko-KR',
@@ -70,7 +69,7 @@ export const fetchTrends = async () => {
 
 export const searchMovies = async (name, page = 1) => {
   try {
-    const ApiData = await fetchApi();
+    const ApiData = process.env.REACT_APP_TMDB_API;
     const res = await axios.get(`${API_URL}/search/movie`, {
       params: {
         query: name,

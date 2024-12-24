@@ -14,7 +14,7 @@ function ProtectedRoute({ children }) {
   const checked = useSelector((state) => state.boolean.value);
   console.log(checked + " : is now state");
   const isAuthenticated = JSON.parse(localStorage.getItem('logged'));
-  return (isAuthenticated || checked) ? children : <Navigate to="/signin" />;
+  return (isAuthenticated || checked) ? children : <Navigate to="/netflix-demo/signin" />;
 }
 
 // AppRouter 컴포넌트

@@ -22,6 +22,10 @@ function Signin({ changeAuth, state }) {
     const userKey = localStorage.getItem('users') || {};
     let userData = null;
     
+    if(Object.keys(userKey).length === 0) {
+      errorMessage("아이디 또는 비밀번호를 잘못 입력하였습니다.");
+      return;
+    }
     if (userKey) {
       try {
         userData = JSON.parse(userKey);
