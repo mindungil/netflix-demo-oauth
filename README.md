@@ -17,6 +17,9 @@ TMDB API를 활용하여 제작한 Netflix 클론 웹 애플리케이션입니�
   - **무한 스크롤**: 영화 데이터를 끊김 없이 로드.  
   - **필터 및 정렬**: 장르, 평점, 인기도, 출시 연도를 기준으로 영화 목록 필터링 및 정렬.  
 
+- **로그인 기능**:
+  카카오 API를 활용한, 간편한 로그인 인터페이스 제공
+
 - **반응형 디자인**:  
   다양한 디바이스에서 최적화된 UI 제공.  
 
@@ -65,65 +68,78 @@ TMDB API를 활용하여 제작한 Netflix 클론 웹 애플리케이션입니�
    npm install
 
 3. **개발 서버 실행**
-   npm start  
+   npm run start:dev or start:prod
+   개발 버전과 배포 버전 분리
    기본적으로 [http://localhost:3000](http://localhost:3000)에서 애플리케이션이 실행됩니다.
 
 4. **빌드 및 배포**
-   npm run build  
+   npm run build:prod
    정적 파일이 `build/` 디렉토리에 생성되며, 이를 GitHub Pages 등에 업로드하여 배포 가능.
 
 ### **실행 가이드** ###
  - **TMDB API 발급**
-   TMDB-API key 를 발급받아 웹 사이트의 비밀번호로 사용해야, API 호출 가능합니다.
+   TMDB-API key를 발급받아 환경변수를 통해 API 호출 가능합니다.
+ - **카카오 로그인 API 발급**
+   카카오 로그인 API를 발급받아 환경변수에 저장해야 합니다.
+ - **환경변수 관리**
+   env에 API 및 URL를 등록해야 기능이 적절합니다.
+
 
 ## **폴더 구조**
-    📦src
-    ┣ 📂components
-    ┃ ┣ 📂Auth
-    ┃ ┃ ┣ 📜Auth.css
-    ┃ ┃ ┣ 📜HandleAuth.css
-    ┃ ┃ ┣ 📜HandleAuth.js
-    ┃ ┃ ┣ 📜Register.js
-    ┃ ┃ ┗ 📜Signin.js
-    ┃ ┣ 📂Header
-    ┃ ┃ ┣ 📜Header.js
-    ┃ ┃ ┣ 📜Nav.css
-    ┃ ┃ ┗ 📜Nav.js
-    ┃ ┣ 📂Movie
-    ┃ ┃ ┣ 📜ApiRequest.js
-    ┃ ┃ ┣ 📜MovieItem.js
-    ┃ ┃ ┣ 📜MovieList.css
-    ┃ ┃ ┣ 📜MovieList.js
-    ┃ ┃ ┣ 📜ScrollView.js
-    ┃ ┃ ┗ 📜TableView.js
-    ┃ ┗ 📂Pages
-    ┃ ┃ ┣ 📜Home.css
-    ┃ ┃ ┣ 📜Home.js
-    ┃ ┃ ┣ 📜Popular.css
-    ┃ ┃ ┣ 📜Popular.js
-    ┃ ┃ ┣ 📜Profile.css
-    ┃ ┃ ┣ 📜Profile.js
-    ┃ ┃ ┣ 📜Search.css
-    ┃ ┃ ┣ 📜Search.js
-    ┃ ┃ ┣ 📜Wishlist.css
-    ┃ ┃ ┗ 📜Wishlist.js
-    ┣ 📂CustomHook
-    ┃ ┗ 📜usePage.js
-    ┣ 📂reducer
-    ┃ ┣ 📜boolean.js
-    ┃ ┣ 📜counter.js
-    ┃ ┣ 📜index.js
-    ┃ ┗ 📜store.js
-    ┣ 📂Util
-    ┃ ┣ 📜config.js
-    ┃ ┗ 📜CustomToast.js
-    ┣ 📜App.css
-    ┣ 📜App.js
-    ┣ 📜AppRouter.js
-    ┣ 📜index.css
-    ┣ 📜index.js
-    ┣ 📜reportWebVitals.js
-    ┗ 📜setupTests.js
+```
+  📦src
+ ┣ 📂components
+ ┃ ┣ 📂Auth
+ ┃ ┃ ┣ 📜Auth.css
+ ┃ ┃ ┣ 📜HandleAuth.css
+ ┃ ┃ ┣ 📜HandleAuth.js
+ ┃ ┃ ┣ 📜kakaoAuth.css
+ ┃ ┃ ┣ 📜KakaoAuth.js
+ ┃ ┃ ┣ 📜KakaoLogout.js
+ ┃ ┃ ┣ 📜Redirect.js
+ ┃ ┃ ┣ 📜Register.js
+ ┃ ┃ ┗ 📜Signin.js
+ ┃ ┣ 📂Header
+ ┃ ┃ ┣ 📜Header.js
+ ┃ ┃ ┣ 📜Nav.css
+ ┃ ┃ ┗ 📜Nav.js
+ ┃ ┣ 📂Movie
+ ┃ ┃ ┣ 📜ApiRequest.js
+ ┃ ┃ ┣ 📜MovieItem.js
+ ┃ ┃ ┣ 📜MovieList.css
+ ┃ ┃ ┣ 📜MovieList.js
+ ┃ ┃ ┣ 📜ScrollView.js
+ ┃ ┃ ┗ 📜TableView.js
+ ┃ ┗ 📂Pages
+ ┃ ┃ ┣ 📜Home.css
+ ┃ ┃ ┣ 📜Home.js
+ ┃ ┃ ┣ 📜Popular.css
+ ┃ ┃ ┣ 📜Popular.js
+ ┃ ┃ ┣ 📜Profile.css
+ ┃ ┃ ┣ 📜Profile.js
+ ┃ ┃ ┣ 📜Search.css
+ ┃ ┃ ┣ 📜Search.js
+ ┃ ┃ ┣ 📜Wishlist.css
+ ┃ ┃ ┗ 📜Wishlist.js
+ ┣ 📂CustomHook
+ ┃ ┗ 📜usePage.js
+ ┣ 📂reducer
+ ┃ ┣ 📜boolean.js
+ ┃ ┣ 📜counter.js
+ ┃ ┣ 📜index.js
+ ┃ ┗ 📜store.js
+ ┣ 📂Util
+ ┃ ┣ 📜config.js
+ ┃ ┣ 📜CustomToast.js
+ ┃ ┗ 📜kakaoUtil.js
+ ┣ 📜App.css
+ ┣ 📜App.js
+ ┣ 📜AppRouter.js
+ ┣ 📜index.css
+ ┣ 📜index.js
+ ┣ 📜reportWebVitals.js
+ ┗ 📜setupTests.js
+```
 
 ---
 
@@ -177,3 +193,4 @@ TMDB API를 활용하여 제작한 Netflix 클론 웹 애플리케이션입니�
 - **개발자**: [길민준](alswnsrlf12@naver.com)  
 - **GitHub**: [https://github.com/mindungil](https://github.com/mindungil)  
 - **TMDB API**: [https://www.themoviedb.org/](https://www.themoviedb.org/)
+- **카카오 로그인 API**: [https://developers.kakao.com/](https://developers.kakao.com/)
