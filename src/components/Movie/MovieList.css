@@ -19,7 +19,7 @@
 	-webkit-transition: .5s ease-in-out;
 	transition: .5s ease-in-out;
 
-  margin: 2rem;
+  margin: 1vh;
 }
 .movie-item:hover img {
 	-webkit-transform: scale(1.2);
@@ -147,7 +147,13 @@
 }
 
 .text-shadow-pop-bottom {
+  display: flex;
   color: white;
+  justify-content: center;
+  margin: 0.5vh;
+  text-align: center;
+  align-items: center;
+  background-color: transparent;
 	-webkit-animation: text-shadow-pop-bottom 0.6s both;
 	        animation: text-shadow-pop-bottom 0.6s both;
 }
