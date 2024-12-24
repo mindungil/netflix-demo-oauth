@@ -68,11 +68,12 @@ TMDB API를 활용하여 제작한 Netflix 클론 웹 애플리케이션입니�
    npm install
 
 3. **개발 서버 실행**
-   npm start  
+   npm run start:dev or start:prod
+   개발 버전과 배포 버전 분리
    기본적으로 [http://localhost:3000](http://localhost:3000)에서 애플리케이션이 실행됩니다.
 
 4. **빌드 및 배포**
-   npm run build  
+   npm run build:prod
    정적 파일이 `build/` 디렉토리에 생성되며, 이를 GitHub Pages 등에 업로드하여 배포 가능.
 
 ### **실행 가이드** ###
@@ -82,6 +83,7 @@ TMDB API를 활용하여 제작한 Netflix 클론 웹 애플리케이션입니�
    카카오 로그인 API를 발급받아 환경변수에 저장해야 합니다.
  - **환경변수 관리**
    env에 API 및 URL를 등록해야 기능이 적절합니다.
+
 
 ## **폴더 구조**
 ```
