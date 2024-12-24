@@ -8,6 +8,8 @@ import Wishlist from './components/Pages/Wishlist';
 import Profile from './components/Pages/Profile';
 import { HandleAuth } from './components/Auth/HandleAuth';
 import { useSelector } from 'react-redux';
+import KakaoAuth from './components/Auth/KakaoAuth';
+import Redirect from './components/Auth/Redirect';
 
 // ProtectedRoute 컴포넌트 정의
 function ProtectedRoute({ children }) {
@@ -28,7 +30,8 @@ function AppRouter() {
         <Route path="/netflix-demo/search" element={<ProtectedRoute><Search /></ProtectedRoute>} />
         <Route path="/netflix-demo/wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
         <Route path="/netflix-demo/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-        <Route path="/netflix-demo/signin" element={<HandleAuth />}></Route>
+        <Route path="/netflix-demo/signin" element={<KakaoAuth />}></Route>
+        <Route path="/netflix-demo/oauth" element={<Redirect />}></Route>
       </Routes>
     </div>
   );
