@@ -23,4 +23,5 @@ export const getUser = async () => {
     } catch(err){
         console.error("유저 프로필 조회 중 오류 :", err);
     }
-}
+};
+
