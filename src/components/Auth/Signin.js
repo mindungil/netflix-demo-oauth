@@ -1,5 +1,5 @@
 // src/components/Auth/Signin.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Auth.css';
 import { errorMessage, successMessage } from '../../Util/CustomToast';
@@ -22,6 +22,10 @@ function Signin({ changeAuth, state }) {
     const userKey = localStorage.getItem('users') || {};
     let userData = null;
     
+    if(Object.keys(userKey).length === 0) {
+      errorMessage("아이디 또는 비밀번호를 잘못 입력하였습니다.");
+      return;
+    }
     if (userKey) {
       try {
         userData = JSON.parse(userKey);
@@ -41,8 +45,15 @@ function Signin({ changeAuth, state }) {
       console.log('로그인 성공 조건 실행');
       if(checkBox) {
         localStorage.setItem('logged', 'true');
+        // 새로고침해도 남아있도록 localStorage와 redux 전역변수 두개 모두 활용
       }
-      else localStorage.setItem('logged', 'false');
+      else {
+        localStorage.setItem('logged', 'false');
+        dispatch(setTrue());
+        console.log(isChecked);
+        // remember me를 체크하지 않았다면, redux 전역 변수의 state에만 로그인 정보 저장
+        // -->> 새로고침 시 로그인 정보는 사라지도록 구현현
+      }
 
       localStorage.setItem('TMDB-key', JSON.stringify(password));
 

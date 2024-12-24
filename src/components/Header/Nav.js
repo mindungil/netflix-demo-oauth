@@ -6,7 +6,7 @@ import { errorMessage, successMessage } from '../../Util/CustomToast';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faIdBadge, faBars } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFalse } from '../../reducer/boolean';
+import { setFalse, setTrue } from '../../reducer/boolean';
 
 function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,9 +21,18 @@ function Nav() {
   useEffect(() => {
     let userId = "";
     const localLogCheck = JSON.parse(localStorage.getItem('logged')) | {};
-    if (logState || localLogCheck) userId = fetchId();
-    setId(userId);
-    console.log(userId);
+    if (localLogCheck) {
+      userId = fetchId();
+      setId(userId);
+      console.log(userId);
+      console.log('state: ', logState);
+      console.log('localState: ', localLogCheck)
+
+      dispatch(setTrue());
+    } else {
+      dispatch(setFalse());
+      console.log('로그인 상태가 아닙니다.');
+    }
   }, [logState]);
 
   useEffect(() => {
@@ -74,15 +83,15 @@ function Nav() {
 
   return (
     <nav className={`nav ${isScrolled ? 'scrolled' : ''}`}>
-      <Link to="/" className="nav-link logo">GILFLIX</Link>
+      <Link to="/netflix-demo" className="nav-link logo">GILFLIX</Link>
       <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
-        <Link to="/" className="nav-link" onClick={closeMenu}>메인</Link>
-        <Link to="/popular" className="nav-link" onClick={closeMenu}>대세 콘텐츠</Link>
-        <Link to="/search" className="nav-link" onClick={closeMenu}>찾아보기</Link>
-        <Link to="/wishlist" className="nav-link" onClick={closeMenu}>위시리스트</Link>
-        <Link to="/profile" className="nav-link" onClick={closeMenu}>내 정보</Link>
+        <Link to="/netflix-demo" className="nav-link" onClick={closeMenu}>메인</Link>
+        <Link to="/netflix-demo/popular" className="nav-link" onClick={closeMenu}>대세 콘텐츠</Link>
+        <Link to="/netflix-demo/search" className="nav-link" onClick={closeMenu}>찾아보기</Link>
+        <Link to="/netflix-demo/wishlist" className="nav-link" onClick={closeMenu}>위시리스트</Link>
+        <Link to="/netflix-demo/profile" className="nav-link" onClick={closeMenu}>내 정보</Link>
         <Link
-          to="/profile"
+          to="/netflix-demo/profile"
           className="nav-link"
           ref={navLinkRef}
           onClick={() => {
@@ -93,8 +102,9 @@ function Nav() {
           <FontAwesomeIcon icon={faIdBadge} style={{marginRight: 3}} />
           {id}
         </Link>
+        {logState ? 
         <a
-          href="/"
+          href="/netflix-demo"
           onClick={(event) => {
             event.preventDefault();
             closeMenu();
@@ -104,7 +114,19 @@ function Nav() {
           className='nav-link'
         >
           로그아웃
+        </a> : 
+        <a
+          href="/netflix-demo/signin"
+          onClick={(event) => {
+            event.preventDefault();
+            closeMenu();
+          }}
+          ref={navLinkRef2}
+          className='nav-link'
+        >
+          로그인이 필요합니다.
         </a>
+        }
       </div>
       <button className="hamburger" onClick={toggleMenu}>
         <FontAwesomeIcon icon={faBars} />
