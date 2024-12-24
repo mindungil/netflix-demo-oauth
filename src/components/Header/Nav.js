@@ -11,6 +11,7 @@ import Logout from '../Auth/KakaoLogout';
 function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false); // 햄버거 메뉴 상태
+  const [name, setName] = useState("");
   const logState = useSelector((state) => state.boolean.value);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,6 +20,11 @@ function Nav() {
 
   useEffect(() => {
     const localLogCheck = JSON.parse(localStorage.getItem('logged')) | {};
+    const userName = JSON.parse(localStorage.getItem('user_name'));
+    if(userName && localLogCheck) {
+      setName(userName);
+    } else if(!localLogCheck) setName("");
+
     if (localLogCheck) {
       console.log('state: ', logState);
       console.log('localState: ', localLogCheck)
@@ -101,7 +107,7 @@ function Nav() {
           }}
         >
           <FontAwesomeIcon icon={faIdBadge} style={{marginRight: 3}} />
-          {/* {id} */}
+          {name}
         </Link>
         {logState ? 
         <a
