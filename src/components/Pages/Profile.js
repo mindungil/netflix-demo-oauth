@@ -7,6 +7,7 @@ import { faIdCard, faIdCardClip } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
 import { setFalse } from '../../reducer/boolean';
 import { useNavigate } from 'react-router-dom';
+import Logout from '../Auth/KakaoLogout';
 
 
 function Profile() {
@@ -59,13 +60,19 @@ function Profile() {
     navigate('/');
   };
 
-  const handleLogout = () => {
-    localStorage.setItem('logged', JSON.stringify(false));
+  const handleLogout = async () => {
+    try{
     dispatch(setFalse());
-    setId("");
-    successMessage("로그아웃 되었습니다.");
 
-    navigate('/');
+    await Logout();
+
+    successMessage("로그아웃 되었습니다.");
+    dispatch(setFalse());
+
+    navigate('/netflix-demo');
+    } catch(err) {
+      console.errir('로그아웃 중 에러 -1 :', err);
+    }
   };
 
   useEffect(() => {

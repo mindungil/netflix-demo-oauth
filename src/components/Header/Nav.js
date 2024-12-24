@@ -1,16 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Nav.css';
-import { fetchId } from '../../Util/config';
 import { errorMessage, successMessage } from '../../Util/CustomToast';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faIdBadge, faBars } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFalse, setTrue } from '../../reducer/boolean';
+import Logout from '../Auth/KakaoLogout';
 
 function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [id, setId] = useState();
   const [menuOpen, setMenuOpen] = useState(false); // 햄버거 메뉴 상태
   const logState = useSelector((state) => state.boolean.value);
   const dispatch = useDispatch();
@@ -19,12 +18,8 @@ function Nav() {
   const navLinkRef2 = useRef(null);
 
   useEffect(() => {
-    let userId = "";
     const localLogCheck = JSON.parse(localStorage.getItem('logged')) | {};
     if (localLogCheck) {
-      userId = fetchId();
-      setId(userId);
-      console.log(userId);
       console.log('state: ', logState);
       console.log('localState: ', localLogCheck)
 
@@ -46,13 +41,19 @@ function Nav() {
     };
   }, []);
 
-  const handleLogout = () => {
-    localStorage.setItem('logged', JSON.stringify(false));
+  const handleLogout = async () => {
+    try{
     dispatch(setFalse());
-    setId("");
+
+    await Logout();
 
     successMessage("로그아웃 되었습니다.");
-    navigate('/');
+    dispatch(setFalse());
+
+    navigate('/netflix-demo');
+    } catch(err) {
+      console.errir('로그아웃 중 에러 -1 :', err);
+    }
   };
 
   const changeRandomColor = () => {
@@ -100,7 +101,7 @@ function Nav() {
           }}
         >
           <FontAwesomeIcon icon={faIdBadge} style={{marginRight: 3}} />
-          {id}
+          {/* {id} */}
         </Link>
         {logState ? 
         <a
@@ -124,7 +125,7 @@ function Nav() {
           ref={navLinkRef2}
           className='nav-link'
         >
-          로그인이 필요합니다.
+          
         </a>
         }
       </div>
