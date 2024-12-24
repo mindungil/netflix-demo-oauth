@@ -28,27 +28,31 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-modules-
 
-      # 4. 의존성 설치 및 프로덕션 빌드
+      # 4. 환경 변수 설정
+      - name: Set environment variables
+        run: |
+          echo "REACT_APP_RESTAPI_KEY=${{ secrets.REACT_APP_RESTAPI_KEY }}" >> .env
+          echo "REACT_APP_REDIRECT_URI=${{ secrets.REACT_APP_REDIRECT_URI }}" >> .env
+          echo "REACT_APP_JS_KEY=${{ secrets.REACT_APP_JS_KEY }}" >> .env
+          echo "REACT_APP_TMDB_URL=${{ secrets.REACT_APP_TMDB_URL }}" >> .env
+          echo "REACT_APP_TMDB_API=${{ secrets.REACT_APP_TMDB_API }}" >> .env
+        env:
+          REACT_APP_RESTAPI_KEY: ${{ secrets.REACT_APP_RESTAPI_KEY }}
+          REACT_APP_REDIRECT_URI: ${{ secrets.REACT_APP_REDIRECT_URI }}
+          REACT_APP_JS_KEY: ${{ secrets.REACT_APP_JS_KEY }}
+          REACT_APP_TMDB_URL: ${{ secrets.REACT_APP_TMDB_URL }}
+          REACT_APP_TMDB_API: ${{ secrets.REACT_APP_TMDB_API }}
+
+      # 5. 의존성 설치 및 프로덕션 빌드
       - name: Install dependencies and build (Production)
         run: |
           npm install
           CI=false npm run build:prod
 
-      # 5. GitHub Pages에 배포
+      # 6. GitHub Pages에 배포
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
           publish_branch: gh-pages # gh-pages에 빌드 파일이 올라가도록 직접 설정
-
-      # 6. 이메일 알림
-      # - name: Send Email Notification
-      #   uses: dawidd6/action-send-mail@v3
-      #   with:
-      #     server_address: smtp.gmail.com
-      #     server_port: 587
- 
-      #     subject: "React Build and Deploy Complete"
-      #     body: |
-      #       netflix-demo 레파지토리의 Git action이 작동했습니다.
